@@ -1,0 +1,9 @@
+numpy
+sklearn
+codecarbon
+torch==1.10.1+cu113
+transformers=4.8.0
+evaluate
+matplotlib
+seaborn
+git+git://github.com:rknaebel/discopy-data
