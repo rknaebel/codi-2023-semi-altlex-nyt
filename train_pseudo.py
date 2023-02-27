@@ -3,14 +3,17 @@ import os
 import click
 import evaluate
 import numpy as np
+import pandas as pd
 import torch
+from discopy_data.data.doc import Relation
 from torch import nn
 from torch.optim import AdamW
-from torch.utils.data import DataLoader, random_split
+from torch.utils.data import DataLoader, random_split, ConcatDataset
 from tqdm.auto import tqdm
 from transformers import AutoModelForTokenClassification
 from transformers import get_scheduler
 
+import helpers
 from helpers.data import get_corpus_path, load_docs
 from helpers.labeling import ConnDataset
 
@@ -22,14 +25,36 @@ def compute_loss(num_labels, logits, labels, device):
     return loss
 
 
+def load_pseudo_docs(pseudo_labels_path):
+    column_names = helpers.stats.column_names
+    labels = pd.read_csv(pseudo_labels_path, names=column_names)
+    docs = {}
+    for corpus in labels.corpus.unique():
+        for doc in load_docs(get_corpus_path(corpus)):
+            docs[doc.doc_id] = doc
+    for (corpus, doc_id), label_group in labels.groupby(['corpus', 'doc_id']):
+        doc = docs[doc_id]
+        words = doc.get_tokens()
+        relations = label_group.to_dict(orient='records')
+        relations = [
+            Relation([], [], [words[i] for i in map(int, rel['indices'].split('-'))], [rel['sense2']], rel['type'])
+            for rel in relations
+        ]
+        yield doc.with_relations(relations)
+
+
 @click.command()
 @click.argument('corpus')
+@click.argument('corpus-plus-path')
 @click.option('-b', '--batch-size', type=int, default=8)
 @click.option('--split-ratio', type=float, default=0.8)
 @click.option('--save-path', default=".")
 @click.option('--test-set', is_flag=True)
 @click.option('--random-seed', default=42, type=int)
-def main(corpus, batch_size, split_ratio, save_path, test_set, random_seed):
+def main(corpus, corpus_plus_path, batch_size, split_ratio, save_path, test_set, random_seed):
+    if os.path.exists(save_path):
+        raise FileExistsError(f"STOP: Model {save_path} already exists!")
+
     corpus_path = get_corpus_path(corpus)
     corpus_docs = load_docs(corpus_path)
     conn_dataset = ConnDataset(corpus_docs, relation_type='altlex')
@@ -43,10 +68,21 @@ def main(corpus, batch_size, split_ratio, save_path, test_set, random_seed):
         test_size = dataset_length - train_size
         train_dataset, test_dataset = random_split(conn_dataset, [train_size, test_size],
                                                    generator=torch.Generator().manual_seed(random_seed))
+
     dataset_length = len(train_dataset)
     train_size = int(dataset_length * split_ratio)
     valid_size = dataset_length - train_size
     train_dataset, valid_dataset = random_split(train_dataset, [train_size, valid_size])
+
+    corpus_docs = load_pseudo_docs(corpus_plus_path)
+    conn_plus_dataset = ConnDataset(corpus_docs, relation_type='altlex', filter_empty_paragraphs=True,
+                                    labels=conn_dataset.labels)
+    print('PSEUDO SAMPLE', len(conn_plus_dataset), conn_plus_dataset[0])
+    print('PSEUDO LABELS:', conn_plus_dataset.labels)
+    print('PSEUDO LABEL COUNTS:', conn_plus_dataset.get_label_counts())
+
+    train_dataset = ConcatDataset([train_dataset, conn_plus_dataset])
+
     print(len(train_dataset), len(valid_dataset))
 
     train_dataloader = DataLoader(train_dataset, shuffle=True, batch_size=batch_size,
@@ -76,7 +112,7 @@ def main(corpus, batch_size, split_ratio, save_path, test_set, random_seed):
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
     model.to(device)
 
-    progress_bar = tqdm(range(num_training_steps), mininterval=5)
+    progress_bar = tqdm(range(num_training_steps), mininterval=3)
 
     best_score = 0.0
     epochs_no_improvement = 0

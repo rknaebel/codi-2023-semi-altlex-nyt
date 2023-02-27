@@ -157,7 +157,7 @@ def main(corpus, save_path, replace, output_path, limit):
             break
         relations = signal_model.predict(doc)
         for rel in relations:
-            csv_out.writerow((corpus, doc.doc_id) + rel)
+            csv_out.writerow((corpus, 'altlex', doc.doc_id) + rel)
         output.flush()
 
 

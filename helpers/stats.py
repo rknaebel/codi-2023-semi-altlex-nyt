@@ -6,9 +6,6 @@ column_names = ('corpus,type,doc_id,paragraph,sentence,signal_prob,indices,signa
                 'sense1,sense1_prob,sense2,sense2_prob').split(',')
 
 
-# corpora = ['pdtb3', 'essay', 'ted', 'unsc', 'bbc', 'anthology']
-
-
 def load_dataframes(corpus):
     paths = glob.glob(f"results/m*/{corpus}.csv")
     dfs = []
@@ -19,9 +16,3 @@ def load_dataframes(corpus):
             print(e)
             continue
     return dfs
-
-# def iter_dataframes():
-#     for c in corpora:
-#         df = load_dataframe(c)
-#         if df is not None:
-#             yield df

@@ -1,7 +1,10 @@
 import bz2
+import sys
 
 try:
     import ujson as json
+
+    print('-- UJSON not found, fallback to json lib', file=sys.stderr)
 except ImportError:
     import json
 import random
@@ -23,7 +26,7 @@ paths = {
     'anthology': f'{source_path}/anthology.v3.json.bz2',
     'essay': f'{source_path}/essay.v3.json.bz2',
     'bbc': f'{source_path}/bbc.v2.json.bz2',
-    'nyt': f'{source_path}/nyt.v3.json.bz2',
+    'nyt': f'{source_path}/nyt.v2.json.bz2',
     'aes': f'{source_path}/asap-aes.v1.json.bz2',
 }
 
