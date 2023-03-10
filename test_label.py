@@ -1,15 +1,18 @@
 import glob
+import itertools
 import os
+from collections import defaultdict
 
 import click
 import evaluate
+import numpy as np
 import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader, random_split
 from tqdm import tqdm
 from transformers import AutoModelForTokenClassification
 
-from helpers.data import get_corpus_path
+from helpers.data import get_corpus_path, load_docs
 from helpers.labeling import ConnDataset
 
 
@@ -27,62 +30,83 @@ def compute_ensemble_prediction(models, batch):
 @click.option('-b', '--batch-size', type=int, default=8)
 @click.option('--save-path', default=".")
 @click.option('--random-seed', default=42, type=int)
-def main(corpus, batch_size, save_path, random_seed):
+@click.option('--mode', default="average", type=click.Choice(['average', 'ensemble']))
+def main(corpus, batch_size, save_path, random_seed, mode):
     save_path = os.path.join(save_path, "best_model_altlex_label")
-    save_paths = glob.glob(save_path)
-    print('SAVE PATHS:', save_paths)
+    save_paths = sorted(glob.glob(save_path))
+    print('SAVE PATHS:', list(enumerate(save_paths)))
     if len(save_paths) == 0:
         raise ValueError('No models found...')
 
     corpus_path = get_corpus_path(corpus)
-    conn_dataset = ConnDataset(corpus_path, relation_type="altlex")
+    corpus_docs = load_docs(corpus_path)
+    conn_dataset = ConnDataset(corpus_docs, relation_type="altlex")
     dataset_length = len(conn_dataset)
-    train_size = int(dataset_length * 0.9)
+    train_size = int(dataset_length * 0.8)
     test_size = dataset_length - train_size
     _, test_dataset = random_split(conn_dataset, [train_size, test_size],
                                    generator=torch.Generator().manual_seed(random_seed))
 
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
-    if len(save_paths) == 1:
-        print("Load Single Classifier Model")
-        model = AutoModelForTokenClassification.from_pretrained(save_paths[0])
-        id2label = model.config.id2label
+    print("Load Model(s)")
+    models = []
+    for save_path in save_paths:
+        model = AutoModelForTokenClassification.from_pretrained(save_path)
         model.eval()
-        model.to(device)
-        models = [model]
-    else:
-        print("Load Ensemble Model")
-        models = []
-        for save_path in save_paths:
-            model = AutoModelForTokenClassification.from_pretrained(save_path)
-            model.eval()
-            model.to(device)
-            models.append(model)
-        id2label = models[0].config.id2label
+        models.append(model)
+        print(f'-- loaded {save_path}')
+    id2label = models[0].config.id2label
 
-    metric = evaluate.load("poseval")
-    test_dataloader = DataLoader(test_dataset, batch_size=batch_size, collate_fn=ConnDataset.get_collate_fn())
-    for batch in tqdm(test_dataloader, total=len(test_dataset) // batch_size, mininterval=2):
-        batch = {k: v.to(device) for k, v in batch.items()}
-        preds = compute_ensemble_prediction(models, batch)
-        predictions = []
-        references = []
-        for pred, ref in zip(preds.tolist(), batch['labels'].tolist()):
-            pred = [id2label[p] for i, p in enumerate(pred) if ref[i] != -100]
-            ref = [id2label[i] for i in ref if i != -100]
-            assert len(pred) == len(ref), f"PRED: {pred}, REF {ref}"
-            predictions.append(pred)
-            references.append(ref)
-        metric.add_batch(predictions=predictions, references=references)
+    def combinations(models, limit=4):
+        yield from itertools.combinations(enumerate(models), 1)
+        for i in range(3, limit + 1):
+            yield from itertools.combinations(enumerate(models), i)
 
-    results = metric.compute()
-    for key, vals in results.items():
-        if key == 'accuracy':
-            print(f"{key:10}  {vals * 100:02.2f}")
-        else:
-            print(
-                f"{key:10}  {vals['precision'] * 100:02.2f}  {vals['recall'] * 100:02.2f}  {vals['f1-score'] * 100:02.2f}  {vals['support']}")
+    ensemble_size = 1 if mode == 'average' else 3
+    results_all = defaultdict(list)
+
+    for models_id_select in combinations(models, ensemble_size):
+        model_ids = [i for i, m in models_id_select]
+        models_select = [m for i, m in models_id_select]
+        print(f"\n=== Evaluate models: {model_ids}")
+        for m in models_select:
+            m.to(device)
+        metric = evaluate.load("poseval")
+        test_dataloader = DataLoader(test_dataset, batch_size=batch_size, collate_fn=ConnDataset.get_collate_fn())
+        for batch in tqdm(test_dataloader, total=len(test_dataset) // batch_size, mininterval=5):
+            batch = {k: v.to(device) for k, v in batch.items()}
+            preds = compute_ensemble_prediction(models_select, batch)
+            predictions = []
+            references = []
+            for pred, ref in zip(preds.tolist(), batch['labels'].tolist()):
+                pred = [id2label[p] for i, p in enumerate(pred) if ref[i] != -100]
+                ref = [id2label[i] for i in ref if i != -100]
+                assert len(pred) == len(ref), f"PRED: {pred}, REF {ref}"
+                predictions.append(pred)
+                references.append(ref)
+            metric.add_batch(predictions=predictions, references=references)
+        for m in models_select:
+            m.to('cpu')
+        results = metric.compute()
+        for key, vals in results.items():
+            if key == 'accuracy':
+                print(f"{key:10}  {vals * 100:02.2f}")
+            else:
+                print(
+                    f"{key:10}  {vals['precision'] * 100:02.2f}  {vals['recall'] * 100:02.2f}  {vals['f1-score'] * 100:02.2f}  {vals['support']}")
+                results_all[key].append((vals['precision'], vals['recall'], vals['f1-score']))
+
+    if mode == 'average':
+        print('== Final MEAN Performance')
+        for key, vals in results_all.items():
+            vals = np.stack(vals)
+            vals_mean = vals.mean(axis=0)
+            vals_var = vals.std(axis=0)
+            print(f"{key:15} "
+                  f"{vals_mean[0] * 100: 5.2f} ({vals_var[0] * 100: 5.2f})  "
+                  f"{vals_mean[1] * 100: 5.2f} ({vals_var[1] * 100: 5.2f})  "
+                  f"{vals_mean[2] * 100: 5.2f} ({vals_var[2] * 100: 5.2f})")
 
 
 if __name__ == '__main__':
