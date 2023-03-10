@@ -1,23 +1,34 @@
+import json
 import os
-from collections import Counter
+from collections import Counter, defaultdict
 from typing import List
 
 import joblib
 import numpy as np
 import torch
 import torch.nn.functional as F
+from discopy_data.data.relation import Relation
 from torch import nn
 from torch.utils.data import Dataset, random_split
 from transformers import AutoTokenizer, AutoModel
 
 from helpers.data import get_sense, get_corpus_path, load_docs, get_doc_embeddings
+from helpers.labeling import decode_labels
+
+
+def group_relations_per_document(labels):
+    docs = defaultdict(list)
+    for label in labels:
+        docs[label['doc_id']].append(label)
+    return dict(docs)
 
 
 def load_dataset(corpus, bert_model, relation_type, split_ratio, labels_coarse=None, labels_fine=None, test_set=False,
-                 random_seed=42):
+                 random_seed=42, predictions=None):
     corpus_path = get_corpus_path(corpus)
     conn_dataset = ConnSenseDataset(corpus_path, bert_model, relation_type=relation_type,
-                                    labels_coarse=labels_coarse, labels_fine=labels_fine)
+                                    labels_coarse=labels_coarse, labels_fine=labels_fine,
+                                    predictions=predictions)
     print('SAMPLE', len(conn_dataset), conn_dataset[0])
     print('LABELS:', conn_dataset.labels_coarse)
     print('LABELS:', conn_dataset.labels_fine)
@@ -57,11 +68,14 @@ def get_bert_features(idxs, doc_bert, used_context=0):
 class ConnSenseDataset(Dataset):
 
     def __init__(self, data_file, bert_model, relation_type='explicit',
-                 labels_coarse=None, labels_fine=None):
+                 labels_coarse=None, labels_fine=None, predictions=None):
         self.items = []
         self.labels_coarse = labels_coarse or {}
         self.labels_fine = labels_fine or {}
-        self.bert_model = bert_model
+        self.bert_model = "roberta-base"
+        if predictions is not None:
+            predictions = [json.loads(line) for line in open(predictions)]
+            predictions = group_relations_per_document(predictions)
 
         cache_path = "/cache/discourse/pdtb3.en.v3.roberta.v2.joblib"
         if os.path.exists(cache_path):
@@ -85,8 +99,22 @@ class ConnSenseDataset(Dataset):
                 embeddings = doc_embedding[token_offset:token_offset + len(sent.tokens)]
                 sent.embeddings = embeddings
             doc_bert = doc.get_embeddings()
+            if predictions and doc.doc_id in predictions:
+                # compare document relations with predictions and filter negative samples
+                tokens = doc.get_tokens()
+                doc_pred = predictions[doc.doc_id]
+                rels_pred = []
+                for p in doc_pred:
+                    for pred in decode_labels(p['labels'], p['probs']):
+                        rels_pred.append(tuple([p['tokens_idx'][idx] for prob, idx in pred]))
+                rels = [tuple([t.idx for t in r.conn.tokens]) for r in doc.relations if
+                        r.type.lower().startswith(relation_type.lower())]
+                negative_samples = set(rels_pred) - set(rels)
+                for negative_sample in negative_samples:
+                    r = Relation(conn=[tokens[i] for i in negative_sample], senses=['None'], type='AltLex')
+                    doc.relations.append(r)
             for r_i, r in enumerate(doc.relations):
-                if r.type.lower() != relation_type.lower():
+                if not r.type.lower().startswith(relation_type.lower()):
                     continue
                 conn_idx = (t.idx for t in r.conn.tokens)
                 features = get_bert_features(conn_idx, doc_bert, used_context=0)
@@ -197,6 +225,7 @@ class DiscourseSenseClassifier(nn.Module):
             "fine": [self.id2label_fine[i] for i in sense_predictions_fine.tolist()],
             "fine_logits": outputs_fine,
             "probs_fine": sense_probs_fine.tolist(),
+            "probs_coarse_all": F.softmax(outputs_coarse, dim=-1).detach().cpu().numpy(),
         }
 
 
@@ -236,4 +265,5 @@ class DiscourseSenseEnsembleClassifier(nn.Module):
             "probs_coarse": sense_probs_coarse.tolist(),
             "fine": [self.id2label_fine[i] for i in sense_predictions_fine.tolist()],
             "probs_fine": sense_probs_fine.tolist(),
+            "probs_coarse_all": outputs_coarse.detach().cpu().numpy(),
         }

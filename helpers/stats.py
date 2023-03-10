@@ -16,3 +16,25 @@ def load_dataframes(corpus):
             print(e)
             continue
     return dfs
+
+
+def print_metrics_results(results):
+    for key, vals in results.items():
+        if key == 'accuracy':
+            print(f"{key:32}  {vals * 100:02.2f}")
+        else:
+            print(
+                f"{key:32}  "
+                f"{vals['precision'] * 100:05.2f}  "
+                f"{vals['recall'] * 100:05.2f}  "
+                f"{vals['f1-score'] * 100:05.2f}  "
+                f"{vals['support']}")
+    print('## ' + '= ' * 50)
+
+
+def print_final_results(loss, results):
+    print("\n===")
+    print(f'=== Final Validation loss: {loss}')
+    print(f'=== Final Validation Macro AVG: {results.get("macro avg")}')
+    print(f'=== Final Validation Weighted AVG: {results.get("weighted avg")}')
+    print("===")

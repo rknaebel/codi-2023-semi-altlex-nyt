@@ -1,11 +1,11 @@
 import bz2
 import sys
+from typing import Iterable
 
 try:
     import ujson as json
-
-    print('-- UJSON not found, fallback to json lib', file=sys.stderr)
 except ImportError:
+    print('-- UJSON not found, fallback to json lib', file=sys.stderr)
     import json
 import random
 
@@ -35,9 +35,9 @@ def get_corpus_path(corpus):
     return paths.get(corpus)
 
 
-def load_docs(bzip_file_path, limit=0):
+def load_docs(bzip_file_path, limit=0) -> Iterable[Document]:
     try:
-        for line_i, line in tqdm(enumerate(bz2.open(filename=bzip_file_path, mode='rt'))):
+        for line_i, line in tqdm(enumerate(bz2.open(filename=bzip_file_path, mode='rt')), mininterval=5):
             if limit and line_i > limit:
                 break
             try:
