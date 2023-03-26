@@ -2,14 +2,11 @@
 # signal = (type: ['altlex', 'explicit'], indices: List[int], sense: List[str])
 import numpy as np
 
-from helpers.data import get_sense
 
-
-def evaluate_connectives(gold_list, predicted_list, threshold=0.9, signal_types=('explicit',)):
-    explicit_gold_list = [indices for (rtype, indices, senses) in gold_list if rtype in signal_types]
-    explicit_predicted_list = [indices for (rtype, indices, senses) in predicted_list if rtype in signal_types]
+# TODO check for altlex type AltLexC
+def evaluate_signals(gold_list, predicted_list, threshold=0.9):
     connective_cm, unmatched = compute_confusion_counts(
-        explicit_gold_list, explicit_predicted_list, compute_span_f1, threshold)
+        gold_list, predicted_list, compute_span_f1, threshold)
     return connective_cm, unmatched
 
 
@@ -50,9 +47,9 @@ def compute_confusion_counts(gold_list, predicted_list, matching_fn, threshold=0
         threshold:
     """
     tp = fp = 0
-    unmatched = np.ones(len(predicted_list), dtype=bool)
-    for gold_span in gold_list:
-        for i, predicted_span in enumerate(predicted_list):
+    unmatched = np.ones(len(gold_list), dtype=bool)
+    for predicted_span in predicted_list:
+        for i, gold_span in enumerate(gold_list):
             if unmatched[i] and matching_fn(gold_span, predicted_span) >= threshold:
                 tp += 1
                 unmatched[i] = 0
@@ -114,33 +111,12 @@ def get_surface_tokens_context(doc, idxs, ctx_size=5):
     return ' '.join((f"_{t}_" if t_i in idxs else t) for t_i, t in enumerate(tokens) if ctx_min <= t_i <= ctx_max)
 
 
-def score_df(df):
-    counts_explicits = []
+def score_paragraphs(paragraphs_gold, paragraphs_pred, threshold=0.9):
     counts_altlex = []
-    for group_index, group in df.groupby(['doc_id']):
-        doc = docs_by_id[group_index]
-        gold_relations = [
-            (rel.type.lower(), [t.idx for t in rel.conn.tokens], [get_sense(s, 2) for s in rel.senses])
-            for rel in doc.relations if len(rel.conn.tokens)
-        ]
-        #     print(group_index)
-        #     print(gold_relations)
-        predicted_relations = [
-            (row.type.lower(), [int(i) for i in row.indices.split('-')], [row.sense2])
-            for k, row in group.iterrows()
-        ]
-        #     print(predicted_relations)
-        explicit_counts, explicit_unmatched = evaluate_connectives(gold_relations, predicted_relations, threshold=0.90)
-        altlex_counts, altlex_unmatched = evaluate_connectives(gold_relations, predicted_relations, threshold=0.90,
-                                                               signal_types=('altlex',))
-
-        for unmatched_idx in explicit_unmatched:
-            print(get_surface_tokens_context(doc, predicted_relations[unmatched_idx][1], ctx_size=5))
-        for unmatched_idx in altlex_unmatched:
-            print(get_surface_tokens_context(doc, predicted_relations[unmatched_idx][1], ctx_size=5))
-
-        counts_explicits.append(explicit_counts)
+    for gold_relations, predicted_relations in zip(paragraphs_gold, paragraphs_pred):
+        altlex_counts, altlex_unmatched = evaluate_signals(gold_relations, predicted_relations, threshold=threshold)
+        # for unmatched_idx in altlex_unmatched:
+        #     print(get_surface_tokens_context(doc, predicted_relations[unmatched_idx][1], ctx_size=5))
         counts_altlex.append(altlex_counts)
 
-    print('explicits:', compute_prf(*np.sum(np.stack(counts_explicits), axis=0)))
-    print('altlex:', compute_prf(*np.sum(np.stack(counts_altlex), axis=0)))
+    return compute_prf(*np.sum(np.stack(counts_altlex), axis=0))

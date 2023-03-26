@@ -6,14 +6,16 @@ from collections import defaultdict
 import click
 import evaluate
 import numpy as np
+import sklearn
 import torch
 import torch.nn.functional as F
-from torch.utils.data import DataLoader, random_split
+from torch.utils.data import DataLoader
 from tqdm import tqdm
 from transformers import AutoModelForTokenClassification
 
 from helpers.data import get_corpus_path, load_docs
-from helpers.labeling import ConnDataset
+from helpers.evaluate import score_paragraphs
+from helpers.labeling import ConnDataset, decode_labels
 
 
 def compute_ensemble_prediction(models, batch):
@@ -39,24 +41,21 @@ def main(corpus, batch_size, save_path, random_seed, mode):
         raise ValueError('No models found...')
 
     corpus_path = get_corpus_path(corpus)
-    corpus_docs = load_docs(corpus_path)
-    conn_dataset = ConnDataset(corpus_docs, relation_type="altlex")
-    dataset_length = len(conn_dataset)
-    train_size = int(dataset_length * 0.8)
-    test_size = dataset_length - train_size
-    _, test_dataset = random_split(conn_dataset, [train_size, test_size],
-                                   generator=torch.Generator().manual_seed(random_seed))
+    train_docs = list(load_docs(corpus_path))
+    _, test_docs = sklearn.model_selection.train_test_split(train_docs, test_size=0.2,
+                                                            random_state=random_seed)
 
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
     print("Load Model(s)")
     models = []
     for save_path in save_paths:
-        model = AutoModelForTokenClassification.from_pretrained(save_path)
+        model = AutoModelForTokenClassification.from_pretrained(save_path, local_files_only=True)
         model.eval()
         models.append(model)
         print(f'-- loaded {save_path}')
     id2label = models[0].config.id2label
+    label2id = {v: k for k, v in id2label.items()}
 
     def combinations(models, limit=4):
         yield from itertools.combinations(enumerate(models), 1)
@@ -65,8 +64,12 @@ def main(corpus, batch_size, save_path, random_seed, mode):
 
     ensemble_size = 1 if mode == 'average' else 3
     results_all = defaultdict(list)
+    test_dataset = ConnDataset(test_docs, labels=label2id)
 
     for models_id_select in combinations(models, ensemble_size):
+        signals_pred = []
+        signals_gold = []
+
         model_ids = [i for i, m in models_id_select]
         models_select = [m for i, m in models_id_select]
         print(f"\n=== Evaluate models: {model_ids}")
@@ -85,16 +88,36 @@ def main(corpus, batch_size, save_path, random_seed, mode):
                 assert len(pred) == len(ref), f"PRED: {pred}, REF {ref}"
                 predictions.append(pred)
                 references.append(ref)
+                signals_pred.append([[i for p, i in signal] for signal in decode_labels(pred, pred)])
+                signals_gold.append([[i for p, i in signal] for signal in decode_labels(ref, ref)])
             metric.add_batch(predictions=predictions, references=references)
         for m in models_select:
             m.to('cpu')
         results = metric.compute()
+
+        precision, recall, f1 = score_paragraphs(signals_gold, signals_pred)
+        results['Full-strong'] = {
+            'precision': precision,
+            'recall': recall,
+            'f1-score': f1,
+            'support': 0,
+        }
+        precision, recall, f1 = score_paragraphs(signals_gold, signals_pred, threshold=0.7)
+        results['Full-soft'] = {
+            'precision': precision,
+            'recall': recall,
+            'f1-score': f1,
+            'support': 0,
+        }
+
         for key, vals in results.items():
             if key == 'accuracy':
-                print(f"{key:10}  {vals * 100:02.2f}")
+                # print(f"{key:10}  {vals * 100:02.2f}")
+                pass
             else:
-                print(
-                    f"{key:10}  {vals['precision'] * 100:02.2f}  {vals['recall'] * 100:02.2f}  {vals['f1-score'] * 100:02.2f}  {vals['support']}")
+                print(f"{key:15} "
+                      f"{vals['precision'] * 100:05.2f}  {vals['recall'] * 100:05.2f}  {vals['f1-score'] * 100:05.2f}  "
+                      f"{vals['support']}")
                 results_all[key].append((vals['precision'], vals['recall'], vals['f1-score']))
 
     if mode == 'average':

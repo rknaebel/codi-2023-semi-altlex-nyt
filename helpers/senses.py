@@ -1,5 +1,6 @@
 import json
 import os
+import random
 from collections import Counter, defaultdict
 from typing import List
 
@@ -55,13 +56,12 @@ def load_dataset(corpus, bert_model, relation_type, split_ratio, labels_coarse=N
 
 def get_bert_features(idxs, doc_bert, used_context=0):
     idxs = list(idxs)
-    pad = np.zeros_like(doc_bert[0])
-    embd = np.concatenate([doc_bert[idxs[0]], doc_bert[idxs[-1]],
-                           doc_bert[idxs].mean(axis=0), doc_bert[idxs].max(axis=0)])
-    if used_context > 0:
-        left = [doc_bert[i] if i >= 0 else pad for i in range(min(idxs) - used_context, min(idxs))]
-        right = [doc_bert[i] if i < len(doc_bert) else pad for i in range(max(idxs) + 1, max(idxs) + 1 + used_context)]
-        embd = np.concatenate(left + [embd] + right).flatten()
+    # pad = np.zeros_like(doc_bert[0])
+    embd = np.concatenate([doc_bert[idxs].mean(axis=0), doc_bert[idxs].max(axis=0)])
+    # if used_context > 0:
+    #     left = [doc_bert[i] if i >= 0 else pad for i in range(min(idxs) - used_context, min(idxs))]
+    #     right = [doc_bert[i] if i < len(doc_bert) else pad for i in range(max(idxs) + 1, max(idxs) + 1 + used_context)]
+    #     embd = np.concatenate(left + [embd] + right).flatten()
     return embd
 
 
@@ -81,8 +81,8 @@ class ConnSenseDataset(Dataset):
         if os.path.exists(cache_path):
             doc_embeddings = joblib.load(cache_path)
         else:
-            tokenizer = AutoTokenizer.from_pretrained("roberta-base", add_prefix_space=True)
-            model = AutoModel.from_pretrained("roberta-base")
+            tokenizer = AutoTokenizer.from_pretrained("roberta-base", add_prefix_space=True, local_files_only=True)
+            model = AutoModel.from_pretrained("roberta-base", local_files_only=True)
             model.eval()
             device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
             model.to(device)
@@ -108,13 +108,16 @@ class ConnSenseDataset(Dataset):
                     for pred in decode_labels(p['labels'], p['probs']):
                         rels_pred.append(tuple([p['tokens_idx'][idx] for prob, idx in pred]))
                 rels = [tuple([t.idx for t in r.conn.tokens]) for r in doc.relations if
-                        r.type.lower().startswith(relation_type.lower())]
-                negative_samples = set(rels_pred) - set(rels)
-                for negative_sample in negative_samples:
-                    r = Relation(conn=[tokens[i] for i in negative_sample], senses=['None'], type='AltLex')
-                    doc.relations.append(r)
+                        r.type.lower() == relation_type.lower()]
+                negative_samples = list(set(rels_pred) - set(rels))
+                num_relations = len([r for r in doc.relations if r.type.lower() == 'altlex'])
+                if num_relations > 0 and len(negative_samples):
+                    k = min(num_relations * 4, len(negative_samples))
+                    for negative_sample in random.sample(negative_samples, k=k):
+                        r = Relation(conn=[tokens[i] for i in negative_sample], senses=['None'], type='AltLex')
+                        doc.relations.append(r)
             for r_i, r in enumerate(doc.relations):
-                if not r.type.lower().startswith(relation_type.lower()):
+                if not r.type.lower() == relation_type.lower():
                     continue
                 conn_idx = (t.idx for t in r.conn.tokens)
                 features = get_bert_features(conn_idx, doc_bert, used_context=0)
@@ -166,7 +169,7 @@ class ConnSenseDataset(Dataset):
 
 
 class DiscourseSenseClassifier(nn.Module):
-    def __init__(self, in_size, labels_coarse, labels_fine, relation_type='both'):
+    def __init__(self, in_size, labels_coarse, labels_fine, relation_type='both', hidden=(2048, 512), drop_rate=0.3):
         super().__init__()
         self.label2id_coarse = labels_coarse
         self.id2label_coarse = {v: k for k, v in self.label2id_coarse.items()}
@@ -179,20 +182,23 @@ class DiscourseSenseClassifier(nn.Module):
         self.config = {
             'in_size': in_size,
             'labels_coarse': labels_coarse,
-            'labels_fine': labels_fine
+            'labels_fine': labels_fine,
+            'hidden': hidden,
+            'drop_rate': drop_rate,
         }
         self.flatten = nn.Flatten()
+        hidden_1, hidden_2 = hidden
         self.linear_relu_stack = nn.Sequential(
-            nn.Dropout(0.3),
-            nn.Linear(in_size, 2048),
+            nn.Dropout(drop_rate),
+            nn.Linear(in_size, hidden_1),
             nn.ReLU(),
-            nn.Dropout(0.3),
-            nn.Linear(2048, 512),
+            nn.Dropout(drop_rate),
+            nn.Linear(hidden_1, hidden_2),
             nn.ReLU(),
-            nn.Dropout(0.3),
+            nn.Dropout(drop_rate),
         )
-        self.linear_coarse = nn.Linear(512, len(labels_coarse))
-        self.linear_fine = nn.Linear(512, len(labels_fine))
+        self.linear_coarse = nn.Linear(hidden_2, len(labels_coarse))
+        self.linear_fine = nn.Linear(hidden_2, len(labels_fine))
 
     @staticmethod
     def load(save_path, relation_type='both'):
@@ -238,6 +244,8 @@ class DiscourseSenseEnsembleClassifier(nn.Module):
         self.models = models
         self.id2label_coarse = self.models[0].id2label_coarse
         self.id2label_fine = self.models[0].id2label_fine
+        self.label2id_coarse = self.models[0].label2id_coarse
+        self.label2id_fine = self.models[0].label2id_fine
 
     @staticmethod
     def load(save_paths, device, relation_type='both'):

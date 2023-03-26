@@ -16,7 +16,7 @@ def load_dataset(corpus, bert_model, relation_type, labels_coarse=None, labels_f
                                     labels_coarse=labels_coarse, labels_fine=labels_fine)
     train_dataset = conn_dataset
     dataset_length = len(train_dataset)
-    train_size = int(dataset_length * 0.9)
+    train_size = int(dataset_length * 0.8)
     test_size = dataset_length - train_size
     train_dataset, test_dataset = random_split(conn_dataset, [train_size, test_size],
                                                generator=torch.Generator().manual_seed(random_seed))
@@ -27,7 +27,7 @@ def load_dataset(corpus, bert_model, relation_type, labels_coarse=None, labels_f
 @click.argument('corpus')
 @click.option('-b', '--batch-size', type=int, default=8)
 @click.option('--bert-model', default="roberta-base")
-@click.option('--save-path', default=".")
+@click.option('--save-path', default="")
 @click.option('--random-seed', default=42, type=int)
 def main(corpus, batch_size, bert_model, save_path, random_seed):
     relation_type = 'altlex'
@@ -53,7 +53,6 @@ def main(corpus, batch_size, bert_model, save_path, random_seed):
     metric_coarse = evaluate.load("poseval")
     metric_fine = evaluate.load("poseval")
     model.eval()
-    scores = []
     print(f"##\n## EVAL \n##")
     for batch in eval_altlex_dataloader:
         batch = {k: v.to(device) for k, v in batch.items()}
@@ -70,17 +69,6 @@ def main(corpus, batch_size, bert_model, save_path, random_seed):
         else:
             print(
                 f"{key:32}  {vals['precision'] * 100:02.2f}  {vals['recall'] * 100:02.2f}  {vals['f1-score'] * 100:02.2f}  {vals['support']}")
-    scores.append(results['macro avg']['f1-score'])
-    print('## ' + '= ' * 50)
-
-    results = metric_fine.compute(zero_division=0)
-    for key, vals in results.items():
-        if key == 'accuracy':
-            print(f"{key:32}  {vals * 100:02.2f}")
-        else:
-            print(
-                f"{key:32}  {vals['precision'] * 100:02.2f}  {vals['recall'] * 100:02.2f}  {vals['f1-score'] * 100:02.2f}  {vals['support']}")
-    scores.append(results['macro avg']['f1-score'])
 
 
 if __name__ == '__main__':

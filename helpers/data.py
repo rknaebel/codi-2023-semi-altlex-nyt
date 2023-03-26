@@ -26,7 +26,7 @@ paths = {
     'anthology': f'{source_path}/anthology.v3.json.bz2',
     'essay': f'{source_path}/essay.v3.json.bz2',
     'bbc': f'{source_path}/bbc.v2.json.bz2',
-    'nyt': f'{source_path}/nyt.v2.json.bz2',
+    'nyt': f'{source_path}/nyt.v4.json.bz2',
     'aes': f'{source_path}/asap-aes.v1.json.bz2',
 }
 
@@ -35,17 +35,22 @@ def get_corpus_path(corpus):
     return paths.get(corpus)
 
 
-def load_docs(bzip_file_path, limit=0) -> Iterable[Document]:
+def load_docs(bzip_file_path, limit=0, sample=1.0) -> Iterable[Document]:
+    doc_i = 0
+    progress_bar = tqdm(mininterval=5)
     try:
-        for line_i, line in tqdm(enumerate(bz2.open(filename=bzip_file_path, mode='rt')), mininterval=5):
-            if limit and line_i > limit:
+        for line in bz2.open(filename=bzip_file_path, mode='rt'):
+            if limit and doc_i > limit:
                 break
             try:
-                yield Document.from_json(json.loads(line))
+                if random.random() < sample:
+                    progress_bar.update(1)
+                    doc_i += 1
+                    yield Document.from_json(json.loads(line))
             except json.JSONDecodeError:
                 continue
     except EOFError:
-        print('Stopped iterator')
+        print('Stopped iterator', file=sys.stderr)
 
 
 def load_all_datasets():
@@ -113,3 +118,29 @@ def get_doc_embeddings(doc, tokenizer, model, last_hidden_only=False, device='cp
                 e_i += 1
         doc_embed.append(embeddings)
     return np.concatenate(doc_embed)
+
+
+def get_paragraph_embeddings(paragraphs, tokenizer, model, last_hidden_only=False, device='cpu'):
+    par_embed = []
+    for paragraph in paragraphs:
+        tokens = [[simple_map.get(t.surface, t.surface) for t in sent.tokens] for sent in paragraph['sentences']]
+        subtokens = [[tokenizer.tokenize(t) for t in sent] for sent in tokens]
+        lengths = [[len(t) for t in s] for s in subtokens]
+        inputs = tokenizer(tokens, padding=True, return_tensors='pt', is_split_into_words=True)
+        inputs = {k: v.to(device) for k, v in inputs.items()}
+        with torch.no_grad():
+            outputs = model(**inputs, output_hidden_states=True)
+        if last_hidden_only:
+            hidden_state = outputs.hidden_states[-2].detach().cpu().numpy()
+        else:
+            hidden_state = torch.cat(outputs.hidden_states[1:-1], axis=-1).detach().cpu().numpy()
+        embeddings = np.zeros((sum(len(s) for s in tokens), hidden_state.shape[-1]), np.float32)
+        e_i = 0
+        for sent_i, _ in enumerate(inputs['input_ids']):
+            len_left = 1
+            for length in lengths[sent_i]:
+                embeddings[e_i] = hidden_state[sent_i][len_left]
+                len_left += length
+                e_i += 1
+        par_embed.append(embeddings)
+    return par_embed

@@ -1,6 +1,7 @@
 import glob
 import itertools
 import os
+import random
 import sys
 from collections import Counter
 
@@ -37,7 +38,7 @@ def tokenize_and_align_labels(tokenizer, examples):
 def get_altlex_label_mapping(doc):
     token_tag_map = {}
     for r in doc.relations:
-        if r.type.lower().startswith('altlex'):
+        if r.type.lower() == 'altlex':
             for t_i, t in enumerate(r.conn.tokens):
                 if t.idx not in token_tag_map:
                     if len(r.conn.tokens) == 1:
@@ -45,8 +46,8 @@ def get_altlex_label_mapping(doc):
                     else:
                         if t_i == 0:
                             label = 'B-ALTLEX'
-                        elif t_i == (len(r.conn.tokens) - 1):
-                            label = 'E-ALTLEX'
+                        # elif t_i == (len(r.conn.tokens) - 1):
+                        #     label = 'E-ALTLEX'
                         else:
                             label = 'I-ALTLEX'
                     token_tag_map[t.idx] = label
@@ -55,9 +56,14 @@ def get_altlex_label_mapping(doc):
 
 class ConnDataset(Dataset):
 
-    def __init__(self, documents, relation_type='explicit', filter_empty_paragraphs=False, labels=None):
+    def __init__(self, documents, filter_empty_paragraphs=False, filter_ratio=1.0, labels=None):
         self.items = []
-        self.labels = labels or {'O': 0}
+        self.labels = {
+            'O': 0,
+            'S-ALTLEX': 1,
+            'B-ALTLEX': 2,
+            'I-ALTLEX': 3,
+        }
 
         for doc_i, doc in enumerate(documents):
             label_mapping = get_altlex_label_mapping(doc)
@@ -76,7 +82,7 @@ class ConnDataset(Dataset):
                         labels.append(label_id)
                 if len(tokens) <= 2:
                     continue
-                if filter_empty_paragraphs and len(set(labels)) == 1:
+                if filter_empty_paragraphs and len(set(labels)) == 1 and random.random() < filter_ratio:
                     continue
                 self.items.append({
                     'id': f"{doc_i}-{p_i}",
@@ -124,7 +130,7 @@ class ConnDataset(Dataset):
     def get_collate_fn():
         from transformers import AutoTokenizer
 
-        tokenizer = AutoTokenizer.from_pretrained("roberta-base", add_prefix_space=True)
+        tokenizer = AutoTokenizer.from_pretrained("roberta-base", add_prefix_space=True, local_files_only=True)
 
         def collate(examples):
             examples = {
@@ -143,28 +149,18 @@ def decode_labels(labels, probs):
     for tok_i, (label, prob) in enumerate(zip(labels, probs)):
         if label.startswith('S'):
             conns.append([(prob, tok_i)])
-    conn_stack = []
     conn_cur = []
     for tok_i, (label, prob) in enumerate(zip(labels, probs)):
         if label.startswith('B'):
-            if conn_cur:
-                conn_stack.append(conn_cur)
+            if not conn_cur:
                 conn_cur = []
             conn_cur.append((prob, tok_i))
         elif label.startswith('I'):
+            conn_cur.append((prob, tok_i))
+        elif label.startswith('O'):
             if conn_cur:
-                conn_cur.append((prob, tok_i))
-            else:
-                conn_cur = conn_stack.pop() if conn_stack else []
-                conn_cur.append((prob, tok_i))
-        elif label.startswith('E'):
-            if conn_cur:
-                conn_cur.append((prob, tok_i))
                 conns.append(conn_cur)
-            if conn_stack:
-                conn_cur = conn_stack.pop()
-            else:
-                conn_cur = []
+            conn_cur = []
     return conns
 
 
@@ -179,11 +175,11 @@ class DiscourseSignalExtractor:
     def load_model(save_path, relation_type='altlex', device='cpu'):
         save_paths = glob.glob(save_path)
         print(f"Load models: {save_paths}", file=sys.stderr)
-        tokenizer = AutoTokenizer.from_pretrained("roberta-base", add_prefix_space=True)
+        tokenizer = AutoTokenizer.from_pretrained("roberta-base", add_prefix_space=True, local_files_only=True)
         signal_models = []
         for save_path in save_paths:
             label_save_path = os.path.join(save_path, f"best_model_{relation_type.lower()}_label")
-            model = AutoModelForTokenClassification.from_pretrained(label_save_path)
+            model = AutoModelForTokenClassification.from_pretrained(label_save_path, local_files_only=True)
             model.eval()
             model.to(device)
             signal_models.append(model)
@@ -236,6 +232,45 @@ class DiscourseSignalExtractor:
                     'relations': relations,
                 })
         return document_signals
+
+    def predict_paragraphs(self, paragraphs):
+        par_batch = []
+        par_tokens = []
+        for paragraph in paragraphs:
+            tokens = [t for s in paragraph['sentences'] for t in s.tokens]
+            par_tokens.append(tokens)
+            par_batch.append([t.surface for t in tokens])
+
+        inputs = self.tokenizer(par_batch, truncation=True, is_split_into_words=True,
+                                padding="max_length", return_tensors='pt')
+        probs, predictions = self.compute_ensemble_prediction(inputs)
+        for b_i, (tokens, pred, prob) in enumerate(zip(par_tokens, predictions.tolist(), probs.tolist())):
+            par = paragraphs[b_i]
+            word_ids = inputs.word_ids(b_i)
+            predicted_token_class = [self.id2label[t] for t in pred]
+            predicted_token_prob = prob
+            word_id_map = []
+            for i, wi in enumerate(word_ids):
+                if wi is not None and (len(word_id_map) == 0 or (word_ids[i - 1] != wi)):
+                    word_id_map.append(i)
+
+            signals = decode_labels([predicted_token_class[i] for i in word_id_map],
+                                    [predicted_token_prob[i] for i in word_id_map])
+            signals = [[tokens[i] for p, i in signal] for signal in signals]
+            relations = [{
+                'tokens_idx': [t.idx for t in signal],
+                'tokens': [t.surface for t in signal],
+            } for signal in signals]
+
+            yield {
+                'doc_id': par['doc_id'],
+                'paragraph_idx': par['paragraph_idx'],
+                'tokens_idx': [t.idx for t in tokens],
+                'tokens': [t.surface for t in tokens],
+                'labels': [predicted_token_class[i] for i in word_id_map],
+                'probs': [round(predicted_token_prob[i], 4) for i in word_id_map],
+                'relations': relations,
+            }
 
     def compute_ensemble_prediction(self, batch):
         batch = {k: v.to(self.device) for k, v in batch.items()}
