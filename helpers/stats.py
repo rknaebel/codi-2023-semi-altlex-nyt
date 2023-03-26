@@ -34,7 +34,7 @@ def print_metrics_results(results):
 
 def print_final_results(loss, results):
     print("\n===")
-    print(f'=== Final Validation loss: {loss}')
+    print(f'=== Final Validation Score: {loss}')
     print(f'=== Final Validation Macro AVG: {results.get("macro avg")}')
     print(f'=== Final Validation Weighted AVG: {results.get("weighted avg")}')
     print("===")
