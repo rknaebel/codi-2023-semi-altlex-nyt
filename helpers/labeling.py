@@ -38,18 +38,13 @@ def tokenize_and_align_labels(tokenizer, examples):
 def get_altlex_label_mapping(doc):
     token_tag_map = {}
     for r in doc.relations:
-        if r.type.lower() == 'altlex':
+        if r.type.lower() == 'altlex' and len(r.conn.get_character_spans()) == 1:
             for t_i, t in enumerate(r.conn.tokens):
                 if t.idx not in token_tag_map:
                     if len(r.conn.tokens) == 1:
                         label = 'S-ALTLEX'
                     else:
-                        if t_i == 0:
-                            label = 'B-ALTLEX'
-                        # elif t_i == (len(r.conn.tokens) - 1):
-                        #     label = 'E-ALTLEX'
-                        else:
-                            label = 'I-ALTLEX'
+                        label = 'I-ALTLEX'
                     token_tag_map[t.idx] = label
     return token_tag_map
 
@@ -61,8 +56,7 @@ class ConnDataset(Dataset):
         self.labels = {
             'O': 0,
             'S-ALTLEX': 1,
-            'B-ALTLEX': 2,
-            'I-ALTLEX': 3,
+            'I-ALTLEX': 2,
         }
 
         for doc_i, doc in enumerate(documents):
@@ -151,13 +145,11 @@ def decode_labels(labels, probs):
             conns.append([(prob, tok_i)])
     conn_cur = []
     for tok_i, (label, prob) in enumerate(zip(labels, probs)):
-        if label.startswith('B'):
+        if label.startswith('I'):
             if not conn_cur:
                 conn_cur = []
             conn_cur.append((prob, tok_i))
-        elif label.startswith('I'):
-            conn_cur.append((prob, tok_i))
-        elif label.startswith('O'):
+        else:
             if conn_cur:
                 conns.append(conn_cur)
             conn_cur = []

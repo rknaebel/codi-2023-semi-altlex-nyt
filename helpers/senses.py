@@ -1,6 +1,5 @@
 import json
 import os
-import random
 from collections import Counter, defaultdict
 from typing import List
 
@@ -110,12 +109,15 @@ class ConnSenseDataset(Dataset):
                 rels = [tuple([t.idx for t in r.conn.tokens]) for r in doc.relations if
                         r.type.lower() == relation_type.lower()]
                 negative_samples = list(set(rels_pred) - set(rels))
-                num_relations = len([r for r in doc.relations if r.type.lower() == 'altlex'])
-                if num_relations > 0 and len(negative_samples):
-                    k = min(num_relations * 4, len(negative_samples))
-                    for negative_sample in random.sample(negative_samples, k=k):
-                        r = Relation(conn=[tokens[i] for i in negative_sample], senses=['None'], type='AltLex')
-                        doc.relations.append(r)
+                # num_relations = len([r for r in doc.relations if r.type.lower() == 'altlex'])
+                for negative_sample in negative_samples:
+                    r = Relation(conn=[tokens[i] for i in negative_sample], senses=['None'], type='AltLex')
+                    doc.relations.append(r)
+                # if num_relations > 0 and len(negative_samples):
+                #     k = min(num_relations * 4, len(negative_samples))
+                #     for negative_sample in random.sample(negative_samples, k=k):
+                #         r = Relation(conn=[tokens[i] for i in negative_sample], senses=['None'], type='AltLex')
+                #         doc.relations.append(r)
             for r_i, r in enumerate(doc.relations):
                 if not r.type.lower() == relation_type.lower():
                     continue

@@ -5,7 +5,6 @@ from collections import defaultdict
 
 import click
 import evaluate
-import numpy as np
 import sklearn
 import torch
 import torch.nn.functional as F
@@ -40,9 +39,11 @@ def main(corpus, batch_size, save_path, random_seed, mode):
     if len(save_paths) == 0:
         raise ValueError('No models found...')
 
+    print(f"RANDOM SEED: {random_seed}")
+
     corpus_path = get_corpus_path(corpus)
     train_docs = list(load_docs(corpus_path))
-    _, test_docs = sklearn.model_selection.train_test_split(train_docs, test_size=0.2,
+    _, test_docs = sklearn.model_selection.train_test_split(train_docs, test_size=0.1,
                                                             random_state=random_seed)
 
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
@@ -95,41 +96,50 @@ def main(corpus, batch_size, save_path, random_seed, mode):
             m.to('cpu')
         results = metric.compute()
 
-        precision, recall, f1 = score_paragraphs(signals_gold, signals_pred)
-        results['Full-strong'] = {
-            'precision': precision,
-            'recall': recall,
-            'f1-score': f1,
-            'support': 0,
-        }
         precision, recall, f1 = score_paragraphs(signals_gold, signals_pred, threshold=0.7)
-        results['Full-soft'] = {
+        results['partial-match'] = {
+            'precision': precision,
+            'recall': recall,
+            'f1-score': f1,
+            'support': 0,
+        }
+        precision, recall, f1 = score_paragraphs(signals_gold, signals_pred, threshold=0.9)
+        results['exact-match'] = {
             'precision': precision,
             'recall': recall,
             'f1-score': f1,
             'support': 0,
         }
 
-        for key, vals in results.items():
-            if key == 'accuracy':
-                # print(f"{key:10}  {vals * 100:02.2f}")
-                pass
-            else:
-                print(f"{key:15} "
-                      f"{vals['precision'] * 100:05.2f}  {vals['recall'] * 100:05.2f}  {vals['f1-score'] * 100:05.2f}  "
-                      f"{vals['support']}")
-                results_all[key].append((vals['precision'], vals['recall'], vals['f1-score']))
+        # for key, vals in results.items():
+        #     if key == 'accuracy':
+        #         # print(f"{key:10}  {vals * 100:02.2f}")
+        #         pass
+        #     else:
+        #         print(f"{key:15} "
+        #               f"{vals['precision'] * 100:05.2f}  {vals['recall'] * 100:05.2f}  {vals['f1-score'] * 100:05.2f}  "
+        #               f"{vals['support']}")
+        #         if len(model_ids) == 1:
+        #             results_all[key].append((vals['precision'], vals['recall'], vals['f1-score']))
 
-    if mode == 'average':
-        print('== Final MEAN Performance')
-        for key, vals in results_all.items():
-            vals = np.stack(vals)
-            vals_mean = vals.mean(axis=0)
-            vals_var = vals.std(axis=0)
-            print(f"{key:15} "
-                  f"{vals_mean[0] * 100: 5.2f} ({vals_var[0] * 100: 5.2f})  "
-                  f"{vals_mean[1] * 100: 5.2f} ({vals_var[1] * 100: 5.2f})  "
-                  f"{vals_mean[2] * 100: 5.2f} ({vals_var[2] * 100: 5.2f})")
+        print(f"==>"
+              f"  {results['partial-match']['precision']}"
+              f"  {results['partial-match']['recall']}"
+              f"  {results['partial-match']['f1-score']}"
+              f"  {results['exact-match']['precision']}"
+              f"  {results['exact-match']['recall']}"
+              f"  {results['exact-match']['f1-score']}"
+              )
+
+    # print('\n== Final MEAN Performance')
+    # for key, vals in results_all.items():
+    #     vals = np.stack(vals)
+    #     vals_mean = vals.mean(axis=0)
+    #     vals_var = vals.std(axis=0)
+    #     print(f"{key:15} "
+    #           f"{vals_mean[0] * 100: 5.2f} ({vals_var[0] * 100: 5.2f})  "
+    #           f"{vals_mean[1] * 100: 5.2f} ({vals_var[1] * 100: 5.2f})  "
+    #           f"{vals_mean[2] * 100: 5.2f} ({vals_var[2] * 100: 5.2f})")
 
 
 if __name__ == '__main__':

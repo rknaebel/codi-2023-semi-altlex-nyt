@@ -1,0 +1,2073 @@
+Load Model(s)
+-- loaded models/self-train-2/v1/m1/best_model_altlex_label
+-- loaded models/self-train-2/v2/m1/best_model_altlex_label
+-- loaded models/self-train-2/v3/m1/best_model_altlex_label
+-- loaded models/self-train-2/v4/m1/best_model_altlex_label
+-- loaded models/self-train-2/v5/m1/best_model_altlex_label
+-- loaded models/self-train-2/v6/m1/best_model_altlex_label
+-- loaded models/self-train-2/v7/m1/best_model_altlex_label
+
+=== Evaluate models: [0]
+66it [01:13,  1.11s/it]
+B-ALTLEX        06.95  87.78  12.89  180
+I-ALTLEX        07.66  87.17  14.08  421
+O               99.97  96.64  98.27  228755
+S-ALTLEX        08.27  87.50  15.12  120
+macro avg       30.71  89.77  35.09  229476
+Full-strong     04.60  70.06  08.63  0
+Full-soft       05.41  82.48  10.16  0
+
+=== Evaluate models: [1]
+66it [01:13,  1.11s/it]
+B-ALTLEX        06.71  87.78  12.47  180
+I-ALTLEX        07.25  87.65  13.39  421
+O               99.97  96.43  98.17  228755
+S-ALTLEX        07.66  87.50  14.09  120
+macro avg       30.40  89.84  34.53  229476
+Full-strong     04.34  70.06  08.18  0
+Full-soft       05.11  82.48  09.63  0
+
+=== Evaluate models: [2]
+66it [01:13,  1.11s/it]
+B-ALTLEX        06.64  88.33  12.35  180
+I-ALTLEX        06.96  87.65  12.89  421
+O               99.97  96.26  98.08  228755
+S-ALTLEX        07.01  87.50  12.98  120
+macro avg       30.14  89.94  34.07  229476
+Full-strong     04.13  69.43  07.79  0
+Full-soft       04.90  82.48  09.25  0
+
+Load Model(s)
+-- loaded models/self-ensemble/v1/m1/best_model_altlex_label
+-- loaded models/self-ensemble/v1/m2/best_model_altlex_label
+-- loaded models/self-ensemble/v1/m3/best_model_altlex_label
+=== Evaluate models: [0]
+B-ALTLEX        12.89  81.67  22.27  180
+I-ALTLEX        12.93  78.38  22.19  421
+O               99.94  98.32  99.12  228755
+S-ALTLEX        13.14  81.67  22.63  120
+macro avg       34.72  85.01  41.56  229476
+Full-strong     07.91  65.61  14.12  0
+Full-soft       09.30  77.07  16.59  0
+
+=== Evaluate models: [1]
+B-ALTLEX        11.38  85.00  20.08  180
+I-ALTLEX        11.06  81.47  19.48  421
+O               99.95  97.99  98.96  228755
+S-ALTLEX        13.26  85.83  22.97  120
+macro avg       33.91  87.57  40.37  229476
+Full-strong     07.18  69.11  13.01  0
+Full-soft       08.27  79.62  14.99  0
+
+=== Evaluate models: [2]
+B-ALTLEX        12.36  81.11  21.45  180
+I-ALTLEX        11.68  81.24  20.42  421
+O               99.95  98.15  99.04  228755
+S-ALTLEX        14.01  84.17  24.02  120
+macro avg       34.50  86.17  41.24  229476
+Full-strong     07.55  65.61  13.53  0
+Full-soft       09.12  79.30  16.36  0
+
+=== Evaluate models: [0, 1, 2]
+B-ALTLEX        12.56  82.78  21.82  180
+I-ALTLEX        12.51  80.29  21.65  421
+O               99.95  98.26  99.10  228755
+S-ALTLEX        14.37  84.17  24.54  120
+macro avg       34.85  86.37  41.78  229476
+Full-strong     07.98  66.56  14.26  0
+Full-soft       09.32  77.71  16.64  0
+
+
+-- loaded models/self-ensemble/v2/m1/best_model_altlex_label
+-- loaded models/self-ensemble/v2/m2/best_model_altlex_label
+-- loaded models/self-ensemble/v2/m3/best_model_altlex_label
+
+=== Evaluate models: [0]
+B-ALTLEX        07.94  85.56  14.53  180
+I-ALTLEX        08.16  86.46  14.91  421
+O               99.96  97.18  98.55  228755
+S-ALTLEX        14.43  83.33  24.60  120
+macro avg       32.62  88.13  38.15  229476
+Full-strong     05.42  66.56  10.03  0
+Full-soft       06.64  81.53  12.28  0
+
+=== Evaluate models: [1]
+B-ALTLEX        08.60  83.33  15.58  180
+I-ALTLEX        09.54  82.66  17.10  421
+O               99.95  97.59  98.76  228755
+S-ALTLEX        13.48  83.33  23.20  120
+macro avg       32.89  86.73  38.66  229476
+Full-strong     06.25  68.79  11.46  0
+Full-soft       07.26  79.94  13.32  0
+
+=== Evaluate models: [2]
+132it [01:12,  1.82it/s]
+B-ALTLEX        11.31  82.78  19.91  180
+I-ALTLEX        11.19  83.37  19.74  421
+O               99.96  97.90  98.92  228755
+S-ALTLEX        10.75  86.67  19.14  120
+macro avg       33.30  87.68  39.42  229476
+Full-strong     06.59  66.56  12.00  0
+Full-soft       08.08  81.53  14.70  0
+
+=== Evaluate models: [0, 1, 2]
+132it [03:29,  1.59s/it]
+B-ALTLEX        09.74  84.44  17.46  180
+I-ALTLEX        09.91  84.09  17.73  421
+O               99.96  97.70  98.82  228755
+S-ALTLEX        13.55  85.00  23.37  120
+macro avg       33.29  87.81  39.34  229476
+Full-strong     06.43  66.56  11.73  0
+Full-soft       07.84  81.21  14.31  0
+
+Load Model(s)
+-- loaded models/self-ensemble/v2/m4/best_model_altlex_label
+-- loaded models/self-ensemble/v2/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+132it [01:11,  1.84it/s]
+B-ALTLEX        08.78  81.11  15.84  180
+I-ALTLEX        09.46  82.90  16.98  421
+O               99.95  97.69  98.81  228755
+S-ALTLEX        17.82  79.17  29.10  120
+macro avg       34.00  85.22  40.18  229476
+Full-strong     06.21  63.06  11.30  0
+Full-soft       07.68  78.03  13.98  0
+
+=== Evaluate models: [1]
+132it [01:12,  1.83it/s]
+B-ALTLEX        12.96  82.78  22.41  180
+I-ALTLEX        11.57  84.32  20.36  421
+O               99.95  98.19  99.06  228755
+S-ALTLEX        18.05  81.67  29.56  120
+macro avg       35.63  86.74  42.85  229476
+Full-strong     08.16  64.33  14.49  0
+Full-soft       09.98  78.66  17.71  0
+
+
++ python3 test_label.py pdtb3 -b 32 --save-path 'models/self-ensemble-1/final/m*' --mode average
+SAVE PATHS: [(0, 'models/self-ensemble-1/final/m1/best_model_altlex_label'), (1, 'models/self-ensemble-1/final/m2/best_model_altlex_label'), (2, 'models/self-ensemble-1/fin
+al/m3/best_model_altlex_label'), (3, 'models/self-ensemble-1/final/m4/best_model_altlex_label'), (4, 'models/self-ensemble-1/final/m5/best_model_altlex_label')]
+Load Model(s)
+-- loaded models/self-ensemble-1/final/m1/best_model_altlex_label
+-- loaded models/self-ensemble-1/final/m2/best_model_altlex_label
+-- loaded models/self-ensemble-1/final/m3/best_model_altlex_label
+-- loaded models/self-ensemble-1/final/m4/best_model_altlex_label
+-- loaded models/self-ensemble-1/final/m5/best_model_altlex_label
+
+== Final MEAN Performance
+B-ALTLEX         50.94 ( 1.69)   41.78 ( 3.97)   45.82 ( 2.74)
+I-ALTLEX         45.22 ( 2.49)   35.87 ( 3.25)   39.84 ( 1.81)
+O                99.82 ( 0.01)   99.87 ( 0.02)   99.85 ( 0.00)
+S-ALTLEX         64.43 ( 1.63)   60.33 ( 3.19)   62.27 ( 2.05)
+macro avg        65.10 ( 1.09)   59.46 ( 2.27)   61.94 ( 1.39)
+weighted avg     99.66 ( 0.01)   99.69 ( 0.01)   99.67 ( 0.01)
+Full-strong      39.53 ( 2.15)   43.06 ( 2.74)   41.13 ( 1.59)
+Full-soft        42.35 ( 2.12)   46.11 ( 2.53)   44.06 ( 1.21)
+
+
+Load Model(s)
+-- loaded models/self-ensemble-1/base/m1/best_model_altlex_label
+-- loaded models/self-ensemble-1/base/m2/best_model_altlex_label
+-- loaded models/self-ensemble-1/base/m3/best_model_altlex_label
+-- loaded models/self-ensemble-1/base/m4/best_model_altlex_label
+-- loaded models/self-ensemble-1/base/m5/best_model_altlex_label
+
+== Final MEAN Performance
+B-ALTLEX         46.63 ( 0.00)   42.22 ( 0.00)   44.31 ( 0.00)
+I-ALTLEX         39.17 ( 0.00)   40.38 ( 0.00)   39.77 ( 0.00)
+O                99.83 ( 0.00)   99.84 ( 0.00)   99.83 ( 0.00)
+S-ALTLEX         69.00 ( 0.00)   57.50 ( 0.00)   62.73 ( 0.00)
+macro avg        63.66 ( 0.00)   59.98 ( 0.00)   61.66 ( 0.00)
+weighted avg     99.66 ( 0.00)   99.66 ( 0.00)   99.66 ( 0.00)
+Full-strong      33.33 ( 0.00)   41.72 ( 0.00)   37.06 ( 0.00)
+Full-soft        36.13 ( 0.00)   45.22 ( 0.00)   40.17 ( 0.00)
+
+SAVE PATHS: [(0, 'models/self-ensemble-1/base/m1/best_model_altlex_label'), (1, 'models/self-ensemble-1/base/m2/best_model_altlex_label'), (2, 'models/self-ensemble-1/base/m3/best_model_altlex_label')]
+Load Model(s)
+-- loaded models/self-ensemble-1/base/m1/best_model_altlex_label
+-- loaded models/self-ensemble-1/base/m2/best_model_altlex_label
+-- loaded models/self-ensemble-1/base/m3/best_model_altlex_label
+== Final MEAN Performance
+B-ALTLEX         52.68 ( 3.41)   39.44 ( 3.88)   44.86 ( 1.82)
+I-ALTLEX         44.89 ( 2.58)   36.82 ( 2.86)   40.28 ( 0.65)
+O                99.82 ( 0.01)   99.88 ( 0.02)   99.85 ( 0.01)
+S-ALTLEX         71.21 ( 0.93)   59.72 ( 0.79)   64.95 ( 0.29)
+macro avg        67.15 ( 1.47)   58.97 ( 1.61)   62.48 ( 0.56)
+weighted avg     99.66 ( 0.00)   99.69 ( 0.01)   99.68 ( 0.01)
+Full-strong      40.10 ( 1.96)   42.04 ( 2.03)   40.96 ( 0.48)
+Full-soft        43.18 ( 2.74)   45.22 ( 1.96)   44.08 ( 1.23)
+
+
+SAVE PATHS: [(0, 'models/self-ensemble-3/v1/m1/best_model_altlex_label'), (1, 'models/self-ensemble-3/v1/m2/best_model_altlex_label'), (2, 'models/self-ensemble-3/v1/m3/best_model_altlex_label')]
+2161it [00:19, 110.99it/s]
+Load Model(s)
+-- loaded models/self-ensemble-3/v1/m1/best_model_altlex_label
+-- loaded models/self-ensemble-3/v1/m2/best_model_altlex_label
+-- loaded models/self-ensemble-3/v1/m3/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:35,  1.86it/s]
+I-ALTLEX        05.85  90.31  10.98  227
+O               99.97  96.99  98.46  116328
+S-ALTLEX        18.22  75.00  29.32  60
+macro avg       41.35  87.43  46.25  116615
+weighted avg    99.75  96.97  98.26  116615
+Full-strong     04.63  62.79  08.63  0
+Full-soft       05.72  77.52  10.65  0
+
+=== Evaluate models: [1]
+67it [00:36,  1.84it/s]
+I-ALTLEX        07.89  89.43  14.50  227
+O               99.98  97.74  98.85  116328
+S-ALTLEX        17.04  88.33  28.57  60
+macro avg       41.64  91.83  47.31  116615
+weighted avg    99.75  97.72  98.65  116615
+Full-strong     07.39  76.74  13.48  0
+Full-soft       08.21  85.27  14.98  0
+
+=== Evaluate models: [2]
+67it [00:36,  1.84it/s]
+I-ALTLEX        06.47  87.22  12.05  227
+O               99.97  97.15  98.54  116328
+S-ALTLEX        10.83  91.67  19.37  60
+macro avg       39.09  92.01  43.32  116615
+weighted avg    99.74  97.13  98.33  116615
+Full-strong     04.92  67.44  09.17  0
+Full-soft       06.05  82.95  11.28  0
+
+=== Evaluate models: [0, 1, 2]
+67it [01:46,  1.59s/it]
+I-ALTLEX        07.48  89.43  13.80  227
+O               99.98  97.62  98.78  116328
+S-ALTLEX        17.25  90.00  28.95  60
+macro avg       41.57  92.35  47.18  116615
+weighted avg    99.75  97.60  98.58  116615
+Full-strong     06.61  72.09  12.10  0
+Full-soft       07.81  85.27  14.31  0
+
+SAVE PATHS: [(0, 'models/self-ensemble-3/v2/m1/best_model_altlex_label'), (1, 'models/self-ensemble-3/v2/m2/best_model_altlex_label'), (2, 'models/self-ensemble-3/v2/m3/best_model_altlex_label')]
+2161it [00:19, 109.68it/s]
+Load Model(s)
+-- loaded models/self-ensemble-3/v2/m1/best_model_altlex_label
+-- loaded models/self-ensemble-3/v2/m2/best_model_altlex_label
+-- loaded models/self-ensemble-3/v2/m3/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:35,  1.86it/s]
+I-ALTLEX        08.60  81.06  15.55  227
+O               99.96  98.13  99.04  116328
+S-ALTLEX        18.52  83.33  30.30  60
+macro avg       42.36  87.51  48.30  116615
+weighted avg    99.74  98.09  98.84  116615
+Full-strong     08.28  70.54  14.82  0
+Full-soft       09.28  79.07  16.61  0
+
+=== Evaluate models: [1]
+67it [00:36,  1.85it/s]
+I-ALTLEX        05.92  92.51  11.12  227
+O               99.98  96.84  98.38  116328
+S-ALTLEX        13.16  86.67  22.86  60
+macro avg       39.69  92.00  44.12  116615
+weighted avg    99.75  96.82  98.17  116615
+Full-strong     05.04  68.99  09.39  0
+Full-soft       06.17  84.50  11.50  0
+
+=== Evaluate models: [2]
+67it [00:36,  1.84it/s]
+I-ALTLEX        09.61  81.50  17.19  227
+O               99.96  98.32  99.13  116328
+S-ALTLEX        19.70  88.33  32.22  60
+macro avg       43.09  89.38  49.51  116615
+weighted avg    99.74  98.28  98.94  116615
+Full-strong     08.39  72.09  15.02  0
+Full-soft       09.47  81.40  16.96  0
+
+=== Evaluate models: [0, 1, 2]
+67it [01:46,  1.59s/it]
+I-ALTLEX        08.83  86.34  16.03  227
+O               99.97  98.07  99.01  116328
+S-ALTLEX        19.22  90.00  31.67  60
+macro avg       42.67  91.47  48.90  116615
+weighted avg    99.75  98.04  98.81  116615
+Full-strong     08.40  74.42  15.09  0
+Full-soft       09.45  83.72  16.98  0
+
+++ models/self-ensemble-4/base
+== Final MEAN Performance
+I-ALTLEX         36.17 ( 5.52)   35.07 ( 3.37)   35.23 ( 2.81)
+O                99.86 ( 0.01)   99.85 ( 0.04)   99.86 ( 0.02)
+S-ALTLEX         65.95 ( 4.08)   71.33 ( 2.67)   68.42 ( 2.33)
+macro avg        67.32 ( 2.77)   68.75 ( 1.66)   67.84 ( 1.44)
+weighted avg     99.72 ( 0.01)   99.71 ( 0.04)   99.72 ( 0.02)
+Full-strong      41.86 ( 5.60)   50.39 ( 2.14)   45.52 ( 3.70)
+Full-soft        44.21 ( 5.35)   53.33 ( 2.66)   48.12 ( 3.41)
+
+++ models/self-ensemble-4/v1
+=== Evaluate models: [0, 1, 2]
+67it [01:45,  1.57s/it]
+I-ALTLEX        08.91  85.90  16.15  227
+O               99.97  98.07  99.01  116328
+S-ALTLEX        17.26  88.33  28.88  60
+macro avg       42.05  90.77  48.01  116615
+weighted avg    99.75  98.04  98.81  116615
+Full-strong     08.14  72.87  14.64  0
+Full-soft       09.09  81.40  16.36  0
+== Final MEAN Performance
+I-ALTLEX         8.41 ( 2.99)   85.61 ( 7.37)   15.07 ( 4.76)
+O                99.97 ( 0.02)   97.58 ( 1.02)   98.76 ( 0.51)
+S-ALTLEX         14.65 ( 2.44)   86.11 ( 2.08)   24.96 ( 3.61)
+macro avg        41.01 ( 1.80)   89.77 ( 2.00)   46.26 ( 2.95)
+weighted avg     99.75 ( 0.01)   97.55 ( 1.00)   98.56 ( 0.52)
+Full-strong      7.35 ( 2.67)   71.06 ( 1.59)   13.17 ( 4.34)
+Full-soft        8.45 ( 3.00)   81.91 ( 1.93)   15.15 ( 4.88)
+
+++ models/self-ensemble-4/v2
+=== Evaluate models: [0, 1, 2]
+67it [01:45,  1.58s/it]
+I-ALTLEX        08.82  83.70  15.95  227
+O               99.96  98.04  98.99  116328
+S-ALTLEX        14.06  88.33  24.26  60
+macro avg       40.95  90.02  46.40  116615
+weighted avg    99.74  98.00  98.79  116615
+Full-strong     07.27  69.77  13.17  0
+Full-soft       08.56  82.17  15.51  0
+== Final MEAN Performance
+I-ALTLEX         8.63 ( 1.69)   84.88 ( 2.75)   15.60 ( 2.71)
+O                99.97 ( 0.00)   97.84 ( 0.32)   98.89 ( 0.16)
+S-ALTLEX         13.39 ( 3.24)   89.44 ( 1.57)   23.11 ( 4.96)
+macro avg        40.66 ( 0.60)   90.72 ( 0.55)   45.87 ( 0.87)
+weighted avg     99.74 ( 0.00)   97.81 ( 0.31)   98.69 ( 0.16)
+Full-strong      6.69 ( 0.41)   71.58 ( 1.46)   12.23 ( 0.69)
+Full-soft        7.77 ( 0.31)   83.20 ( 1.32)   14.21 ( 0.51)
+
+
+++
+++ FINAL EVALUATION ++
+++
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final/base/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/base/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/base/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/base/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/base/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:55,  1.20it/s]
+I-ALTLEX        42.77  29.96  35.23  227
+O               99.85  99.91  99.88  116328
+S-ALTLEX        71.93  68.33  70.09  60
+macro avg       71.52  66.07  68.40  116615
+weighted avg    99.72  99.76  99.74  116615
+Full-strong     47.58  45.74  46.64  0
+Full-soft       50.00  48.06  49.01  0
+
+=== Evaluate models: [1]
+67it [00:55,  1.21it/s]
+I-ALTLEX        28.77  37.00  32.37  227
+O               99.86  99.81  99.83  116328
+S-ALTLEX        68.85  70.00  69.42  60
+macro avg       65.83  68.94  67.21  116615
+weighted avg    99.71  99.67  99.69  116615
+Full-strong     34.78  49.61  40.89  0
+Full-soft       36.96  52.71  43.45  0
+
+=== Evaluate models: [2]
+67it [00:55,  1.21it/s]
+I-ALTLEX        33.19  34.36  33.77  227
+O               99.85  99.86  99.86  116328
+S-ALTLEX        75.51  61.67  67.89  60
+macro avg       69.52  65.29  67.17  116615
+weighted avg    99.71  99.71  99.71  116615
+Full-strong     40.41  45.74  42.91  0
+Full-soft       41.78  47.29  44.36  0
+
+=== Evaluate models: [3]
+67it [00:37,  1.79it/s]
+I-ALTLEX        27.71  38.33  32.16  227
+O               99.87  99.79  99.83  116328
+S-ALTLEX        62.69  70.00  66.14  60
+macro avg       63.42  69.37  66.04  116615
+weighted avg    99.71  99.65  99.68  116615
+Full-strong     32.99  49.61  39.63  0
+Full-soft       36.08  54.26  43.34  0
+
+=== Evaluate models: [4]
+67it [00:37,  1.79it/s]
+I-ALTLEX        32.13  39.21  35.32  227
+O               99.87  99.82  99.85  116328
+S-ALTLEX        66.18  75.00  70.31  60
+macro avg       66.06  71.34  68.49  116615
+weighted avg    99.72  99.69  99.71  116615
+Full-strong     38.33  53.49  44.66  0
+Full-soft       40.56  56.59  47.25  0
+
+== Final MEAN Performance
+I-ALTLEX         32.91 ( 5.33)   35.77 ( 3.34)   33.77 ( 1.35)
+O                99.86 ( 0.01)   99.84 ( 0.04)   99.85 ( 0.02)
+S-ALTLEX         69.03 ( 4.45)   69.00 ( 4.29)   68.77 ( 1.56)
+macro avg        67.27 ( 2.88)   68.20 ( 2.23)   67.46 ( 0.91)
+weighted avg     99.71 ( 0.01)   99.70 ( 0.04)   99.70 ( 0.02)
+Full-strong      38.82 ( 5.10)   48.84 ( 2.90)   42.95 ( 2.52)
+Full-soft        41.08 ( 4.95)   51.78 ( 3.58)   45.48 ( 2.26)
+
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final/0.4/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.4/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.4/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.4/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.4/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+I-ALTLEX        24.44  52.86  33.43  227
+O               99.90  99.64  99.77  116328
+S-ALTLEX        51.04  81.67  62.82  60
+macro avg       58.46  78.06  65.34  116615
+weighted avg    99.73  99.54  99.62  116615
+Full-strong     29.30  62.02  39.80  0
+Full-soft       31.50  66.67  42.79  0
+
+=== Evaluate models: [1]
+I-ALTLEX        27.47  39.21  32.30  227
+O               99.87  99.77  99.82  116328
+S-ALTLEX        53.75  71.67  61.43  60
+macro avg       60.36  70.21  64.52  116615
+weighted avg    99.70  99.64  99.67  116615
+Full-strong     34.17  52.71  41.46  0
+Full-soft       36.68  56.59  44.51  0
+
+=== Evaluate models: [2]
+I-ALTLEX        27.61  39.65  32.55  227
+O               99.87  99.76  99.82  116328
+S-ALTLEX        53.57  75.00  62.50  60
+macro avg       60.35  71.47  64.96  116615
+weighted avg    99.71  99.63  99.67  116615
+Full-strong     34.30  55.04  42.26  0
+Full-soft       36.71  58.91  45.24  0
+
+=== Evaluate models: [3]
+I-ALTLEX        26.11  46.70  33.49  227
+O               99.89  99.70  99.79  116328
+S-ALTLEX        50.00  80.00  61.54  60
+macro avg       58.66  75.47  64.94  116615
+weighted avg    99.72  99.59  99.65  116615
+Full-strong     31.30  59.69  41.07  0
+Full-soft       32.93  62.79  43.20  0
+
+=== Evaluate models: [4]
+I-ALTLEX        25.47  41.41  31.54  227
+O               99.87  99.73  99.80  116328
+S-ALTLEX        51.72  75.00  61.22  60
+macro avg       59.02  72.05  64.19  116615
+weighted avg    99.70  99.60  99.65  116615
+Full-strong     32.27  55.04  40.69  0
+Full-soft       34.55  58.91  43.55  0
+
+== Final MEAN Performance
+I-ALTLEX         26.22 ( 1.20)   43.96 ( 5.19)   32.66 ( 0.73)
+O                99.88 ( 0.01)   99.72 ( 0.05)   99.80 ( 0.02)
+S-ALTLEX         52.02 ( 1.45)   76.67 ( 3.65)   61.90 ( 0.64)
+macro avg        59.37 ( 0.82)   73.45 ( 2.89)   64.79 ( 0.40)
+weighted avg     99.71 ( 0.01)   99.60 ( 0.03)   99.65 ( 0.02)
+Full-strong      32.27 ( 1.87)   56.90 ( 3.42)   41.06 ( 0.82)
+Full-soft        34.47 ( 2.06)   60.78 ( 3.56)   43.86 ( 0.90)
+
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final/0.5/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.5/m2/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:36,  1.86it/s]
+I-ALTLEX        33.46  39.65  36.29  227
+O               99.87  99.82  99.85  116328
+S-ALTLEX        64.38  78.33  70.68  60
+macro avg       65.90  72.60  68.94  116615
+weighted avg    99.72  99.70  99.71  116615
+Full-strong     43.27  57.36  49.33  0
+Full-soft       46.20  61.24  52.67  0
+
+=== Evaluate models: [1]
+I-ALTLEX        29.86  45.37  36.01  227
+O               99.88  99.77  99.83  116328
+S-ALTLEX        63.51  78.33  70.15  60
+macro avg       64.42  74.49  68.66  116615
+weighted avg    99.73  99.65  99.69  116615
+Full-strong     37.19  57.36  45.12  0
+Full-soft       41.71  64.34  50.61  0
+
+=== Evaluate models: [2]
+I-ALTLEX        30.12  45.37  36.20  227
+O               99.88  99.77  99.82  116328
+S-ALTLEX        58.02  78.33  66.67  60
+macro avg       62.67  74.49  67.57  116615
+weighted avg    99.73  99.65  99.68  116615
+Full-strong     37.07  58.91  45.51  0
+Full-soft       39.51  62.79  48.50  0
+
+=== Evaluate models: [3]
+I-ALTLEX        27.42  44.93  34.06  227
+O               99.88  99.74  99.81  116328
+S-ALTLEX        57.83  80.00  67.13  60
+macro avg       61.71  74.89  67.00  116615
+weighted avg    99.72  99.62  99.67  116615
+Full-strong     33.48  58.14  42.49  0
+Full-soft       36.61  63.57  46.46  0
+
+=== Evaluate models: [4]
+I-ALTLEX        33.46  38.77  35.92  227
+O               99.87  99.82  99.84  116328
+S-ALTLEX        58.23  76.67  66.19  60
+macro avg       63.85  71.75  67.32  116615
+weighted avg    99.72  99.69  99.70  116615
+Full-strong     40.33  56.59  47.10  0
+Full-soft       41.99  58.91  49.03  0
+
+== Final MEAN Performance
+I-ALTLEX         30.86 ( 2.32)   42.82 ( 2.97)   35.70 ( 0.83)
+O                99.88 ( 0.01)   99.78 ( 0.03)   99.83 ( 0.01)
+S-ALTLEX         60.40 ( 2.92)   78.33 ( 1.05)   68.16 ( 1.87)
+macro avg        63.71 ( 1.44)   73.65 ( 1.24)   67.90 ( 0.76)
+weighted avg     99.72 ( 0.00)   99.66 ( 0.03)   99.69 ( 0.02)
+Full-strong      38.27 ( 3.31)   57.67 ( 0.79)   45.91 ( 2.26)
+Full-soft        41.20 ( 3.16)   62.17 ( 1.92)   49.45 ( 2.08)
+
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final/0.6/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.6/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.6/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.6/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.6/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+I-ALTLEX        36.87  32.16  34.35  227
+O               99.86  99.87  99.86  116328
+S-ALTLEX        61.97  73.33  67.18  60
+macro avg       66.23  68.45  67.13  116615
+weighted avg    99.71  99.73  99.72  116615
+Full-strong     41.83  49.61  45.39  0
+Full-soft       43.14  51.16  46.81  0
+
+=== Evaluate models: [1]
+I-ALTLEX        33.83  40.09  36.69  227
+O               99.87  99.83  99.85  116328
+S-ALTLEX        66.18  75.00  70.31  60
+macro avg       66.63  71.64  68.95  116615
+weighted avg    99.73  99.70  99.71  116615
+Full-strong     40.00  54.26  46.05  0
+Full-soft       42.29  57.36  48.68  0
+
+=== Evaluate models: [2]
+67it [00:37,  1.79it/s]
+I-ALTLEX        33.33  43.61  37.79  227
+O               99.88  99.81  99.84  116328
+S-ALTLEX        63.77  73.33  68.22  60
+macro avg       65.66  72.25  68.62  116615
+weighted avg    99.73  99.69  99.71  116615
+Full-strong     38.83  56.59  46.06  0
+Full-soft       40.43  58.91  47.95  0
+
+=== Evaluate models: [3]
+67it [00:37,  1.79it/s]
+I-ALTLEX        28.57  38.77  32.90  227
+O               99.87  99.79  99.83  116328
+S-ALTLEX        64.29  75.00  69.23  60
+macro avg       64.24  71.19  67.32  116615
+weighted avg    99.71  99.66  99.68  116615
+Full-strong     33.33  51.94  40.61  0
+Full-soft       36.32  56.59  44.24  0
+
+=== Evaluate models: [4]
+67it [00:37,  1.79it/s]
+I-ALTLEX        33.85  38.77  36.14  227
+O               99.87  99.83  99.85  116328
+S-ALTLEX        64.29  75.00  69.23  60
+macro avg       66.00  71.20  68.41  116615
+weighted avg    99.72  99.70  99.71  116615
+Full-strong     41.18  54.26  46.82  0
+Full-soft       44.12  58.14  50.17  0
+
+== Final MEAN Performance
+I-ALTLEX         33.29 ( 2.67)   38.68 ( 3.71)   35.57 ( 1.74)
+O                99.87 ( 0.01)   99.83 ( 0.03)   99.85 ( 0.01)
+S-ALTLEX         64.10 ( 1.34)   74.33 ( 0.82)   68.83 ( 1.06)
+macro avg        65.75 ( 0.82)   70.95 ( 1.31)   68.08 ( 0.73)
+weighted avg     99.72 ( 0.01)   99.69 ( 0.02)   99.71 ( 0.01)
+Full-strong      39.03 ( 3.03)   53.33 ( 2.37)   44.99 ( 2.24)
+Full-soft        41.26 ( 2.75)   56.43 ( 2.75)   47.57 ( 1.99)
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final/0.7/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.7/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.7/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.7/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.7/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:55,  1.21it/s]
+I-ALTLEX        36.21  37.00  36.60  227
+O               99.87  99.85  99.86  116328
+S-ALTLEX        62.86  73.33  67.69  60
+macro avg       66.31  70.06  68.05  116615
+weighted avg    99.72  99.72  99.72  116615
+Full-strong     41.88  51.94  46.37  0
+Full-soft       43.75  54.26  48.44  0
+
+=== Evaluate models: [1]
+67it [00:55,  1.21it/s]
+I-ALTLEX        36.00  39.65  37.74  227
+O               99.87  99.84  99.85  116328
+S-ALTLEX        57.53  70.00  63.16  60
+macro avg       64.47  69.83  66.92  116615
+weighted avg    99.72  99.71  99.71  116615
+Full-strong     39.53  52.71  45.18  0
+Full-soft       41.86  55.81  47.84  0
+
+=== Evaluate models: [2]
+67it [00:55,  1.21it/s]
+I-ALTLEX        32.73  40.09  36.04  227
+O               99.87  99.82  99.85  116328
+S-ALTLEX        66.67  70.00  68.29  60
+macro avg       66.42  69.97  68.06  116615
+weighted avg    99.72  99.69  99.71  116615
+Full-strong     37.64  51.94  43.65  0
+Full-soft       38.76  53.49  44.95  0
+
+=== Evaluate models: [3]
+67it [00:36,  1.83it/s]
+I-ALTLEX        30.70  29.07  29.86  227
+O               99.85  99.85  99.85  116328
+S-ALTLEX        65.15  71.67  68.25  60
+macro avg       65.23  66.87  65.99  116615
+weighted avg    99.70  99.70  99.70  116615
+Full-strong     38.27  48.06  42.61  0
+Full-soft       40.12  50.39  44.67  0
+
+=== Evaluate models: [4]
+67it [00:36,  1.83it/s]
+I-ALTLEX        31.65  44.05  36.83  227
+O               99.88  99.80  99.84  116328
+S-ALTLEX        69.84  73.33  71.54  60
+macro avg       67.12  72.40  69.41  116615
+weighted avg    99.73  99.68  99.70  116615
+Full-strong     36.65  54.26  43.75  0
+Full-soft       39.27  58.14  46.88  0
+== Final MEAN Performance
+I-ALTLEX         33.46 ( 2.26)   37.97 ( 4.99)   35.41 ( 2.83)
+O                99.87 ( 0.01)   99.83 ( 0.02)   99.85 ( 0.01)
+S-ALTLEX         64.41 ( 4.12)   71.67 ( 1.49)   67.79 ( 2.68)
+macro avg        65.91 ( 0.94)   69.82 ( 1.76)   67.68 ( 1.16)
+weighted avg     99.72 ( 0.01)   99.70 ( 0.01)   99.71 ( 0.01)
+Full-strong      38.79 ( 1.80)   51.78 ( 2.05)   44.31 ( 1.31)
+Full-soft        40.75 ( 1.83)   54.42 ( 2.57)   46.56 ( 1.51)
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final/0.8/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.8/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.8/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.8/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.8/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:55,  1.21it/s]
+I-ALTLEX        35.91  28.63  31.86  227
+O               99.85  99.88  99.87  116328
+S-ALTLEX        63.77  73.33  68.22  60
+macro avg       66.51  67.28  66.65  116615
+weighted avg    99.71  99.73  99.72  116615
+Full-strong     41.96  46.51  44.12  0
+Full-soft       45.45  50.39  47.79  0
+
+=== Evaluate models: [1]
+67it [00:55,  1.21it/s]
+I-ALTLEX        32.72  39.21  35.67  227
+O               99.87  99.83  99.85  116328
+S-ALTLEX        67.19  71.67  69.35  60
+macro avg       66.59  70.23  68.29  116615
+weighted avg    99.72  99.69  99.71  116615
+Full-strong     37.14  50.39  42.76  0
+Full-soft       39.43  53.49  45.39  0
+
+=== Evaluate models: [2]
+67it [00:55,  1.21it/s]
+I-ALTLEX        33.33  40.09  36.40  227
+O               99.87  99.83  99.85  116328
+S-ALTLEX        68.97  66.67  67.80  60
+macro avg       67.39  68.86  68.02  116615
+weighted avg    99.72  99.70  99.71  116615
+Full-strong     38.92  50.39  43.92  0
+Full-soft       41.32  53.49  46.62  0
+
+=== Evaluate models: [3]
+I-ALTLEX        27.68  40.97  33.04  227
+O               99.87  99.77  99.82  116328
+S-ALTLEX        66.18  75.00  70.31  60
+macro avg       64.58  71.91  67.72  116615
+weighted avg    99.72  99.65  99.68  116615
+Full-strong     33.50  51.16  40.49  0
+Full-soft       36.55  55.81  44.17  0
+
+=== Evaluate models: [4]
+I-ALTLEX        36.76  29.96  33.01  227
+O               99.85  99.89  99.87  116328
+S-ALTLEX        70.49  71.67  71.07  60
+macro avg       69.03  67.17  67.98  116615
+weighted avg    99.71  99.74  99.72  116615
+Full-strong     41.55  45.74  43.54  0
+Full-soft       44.37  48.84  46.49  0
+
+== Final MEAN Performance
+I-ALTLEX         33.28 ( 3.18)   35.77 ( 5.33)   34.00 ( 1.73)
+O                99.86 ( 0.01)   99.84 ( 0.04)   99.85 ( 0.02)
+S-ALTLEX         67.32 ( 2.31)   71.67 ( 2.79)   69.35 ( 1.23)
+macro avg        66.82 ( 1.44)   69.09 ( 1.80)   67.73 ( 0.57)
+weighted avg     99.72 ( 0.01)   99.70 ( 0.03)   99.71 ( 0.02)
+Full-strong      38.61 ( 3.10)   48.84 ( 2.25)   42.97 ( 1.32)
+Full-soft        41.42 ( 3.25)   52.40 ( 2.48)   46.10 ( 1.23)
+
+-- loaded models/self-ensemble-4/final/0.9/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.9/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final/0.9/m3/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:55,  1.21it/s]
+I-ALTLEX        38.83  32.16  35.18  227
+O               99.85  99.89  99.87  116328
+S-ALTLEX        69.35  71.67  70.49  60
+macro avg       69.35  67.90  68.51  116615
+weighted avg    99.72  99.74  99.73  116615
+Full-strong     43.75  48.84  46.15  0
+Full-soft       45.14  50.39  47.62  0
+
+=== Evaluate models: [1]
+67it [00:55,  1.21it/s]
+I-ALTLEX        32.47  38.77  35.34  227
+O               99.87  99.83  99.85  116328
+S-ALTLEX        68.18  75.00  71.43  60
+macro avg       66.84  71.20  68.87  116615
+weighted avg    99.72  99.70  99.71  116615
+Full-strong     38.20  52.71  44.30  0
+Full-soft       40.45  55.81  46.91  0
+
+=== Evaluate models: [2]
+67it [00:55,  1.21it/s]
+I-ALTLEX        28.28  36.12  31.72  227
+O               99.86  99.81  99.83  116328
+S-ALTLEX        67.80  66.67  67.23  60
+macro avg       65.31  67.53  66.26  116615
+weighted avg    99.70  99.67  99.68  116615
+Full-strong     31.38  45.74  37.22  0
+Full-soft       35.11  51.16  41.64  0
+
+=== Evaluate models: [3]
+67it [00:37,  1.80it/s]
+I-ALTLEX        30.98  40.53  35.11  227
+O               99.87  99.81  99.84  116328
+S-ALTLEX        68.75  73.33  70.97  60
+macro avg       66.53  71.22  68.64  116615
+weighted avg    99.72  99.68  99.70  116615
+Full-strong     35.48  51.16  41.90  0
+Full-soft       38.17  55.04  45.08  0
+
+=== Evaluate models: [4]
+67it [00:37,  1.80it/s]
+I-ALTLEX        34.36  34.36  34.36  227
+O               99.86  99.86  99.86  116328
+S-ALTLEX        68.25  71.67  69.92  60
+macro avg       67.49  68.63  68.05  116615
+weighted avg    99.71  99.71  99.71  116615
+Full-strong     39.88  50.39  44.52  0
+Full-soft       42.33  53.49  47.26  0
+
+== Final MEAN Performance
+I-ALTLEX         32.98 ( 3.54)   36.39 ( 3.00)   34.34 ( 1.35)
+O                99.86 ( 0.01)   99.84 ( 0.03)   99.85 ( 0.01)
+S-ALTLEX         68.47 ( 0.54)   71.67 ( 2.79)   70.01 ( 1.48)
+macro avg        67.10 ( 1.33)   69.30 ( 1.60)   68.07 ( 0.94)
+weighted avg     99.72 ( 0.01)   99.70 ( 0.03)   99.71 ( 0.02)
+Full-strong      37.74 ( 4.16)   49.77 ( 2.37)   42.82 ( 3.11)
+Full-soft        40.24 ( 3.44)   53.18 ( 2.11)   45.70 ( 2.21)
+
+
+
+Base  &  41.08 (4.95)  &  51.78 (3.58)  &  45.48 (2.26)  &  38.82 (5.10)  &  48.84 (2.90)  &  42.95 (2.52) \\
+0.4   &  32.27 (1.87)  &  56.90 (3.42)  &  41.06 (0.82)  &  34.47 (2.06)  &  60.78 (3.56)  &  43.86 (0.90) \\
+0.5   &  41.08 (4.95)  &  51.78 (3.58)  &  45.48 (2.26)  &  38.82 (5.10)  &  48.84 (2.90)  &  42.95 (2.52) \\
+0.6   &  41.26 (2.75)  &  56.43 (2.75)  &  47.57 (1.99)  &  39.03 (3.03)  &  53.33 (2.37)  &  44.99 (2.24) \\
+0.7   &  40.75 (1.83)  &  54.42 (2.57)  &  46.56 (1.51)  &  38.79 (1.80)  &  51.78 (2.05)  &  44.31 (1.31) \\
+0.8   &  41.42 (3.25)  &  52.40 (2.48)  &  46.10 (1.23)  &  38.61 (3.10)  &  48.84 (2.25)  &  42.97 (1.32) \\
+0.9   &  40.24 (3.44)  &  53.18 (2.11)  &  45.70 (2.21)  &  37.74 (4.16)  &  49.77 (2.37)  &  42.82 (3.11) \\
+
+##
+##  XL EVALUATION
+##
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-xl/0.4/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.4/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.4/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.4/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.4/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:55,  1.20it/s]
+I-ALTLEX        31.21  45.37  36.98  227
+O               99.88  99.77  99.83  116328
+S-ALTLEX        55.68  81.67  66.22  60
+macro avg       62.26  75.60  67.68  116615
+weighted avg    99.73  99.66  99.69  116615
+Full-strong     35.71  58.14  44.25  0
+Full-soft       39.52  64.34  48.97  0
+
+=== Evaluate models: [1]
+I-ALTLEX        30.87  49.78  38.11  227
+O               99.89  99.75  99.82  116328
+S-ALTLEX        51.65  78.33  62.25  60
+macro avg       60.81  75.95  66.73  116615
+weighted avg    99.73  99.64  99.68  116615
+Full-strong     34.98  60.47  44.32  0
+Full-soft       38.12  65.89  48.30  0
+
+=== Evaluate models: [2]
+67it [00:54,  1.23it/s]
+I-ALTLEX        29.80  39.65  34.03  227
+O               99.87  99.77  99.82  116328
+S-ALTLEX        46.08  78.33  58.02  60
+macro avg       58.58  72.58  63.96  116615
+weighted avg    99.71  99.64  99.67  116615
+Full-strong     34.76  56.59  43.07  0
+Full-soft       36.19  58.91  44.84  0
+
+=== Evaluate models: [3]
+67it [00:54,  1.23it/s]
+I-ALTLEX        30.28  37.89  33.66  227
+O               99.87  99.81  99.84  116328
+S-ALTLEX        60.27  73.33  66.17  60
+macro avg       63.47  70.34  66.55  116615
+weighted avg    99.71  99.67  99.69  116615
+Full-strong     39.53  52.71  45.18  0
+Full-soft       41.28  55.04  47.18  0
+
+=== Evaluate models: [4]
+67it [00:54,  1.23it/s]
+I-ALTLEX        28.75  49.78  36.45  227
+O               99.89  99.73  99.81  116328
+S-ALTLEX        55.06  81.67  65.77  60
+macro avg       61.23  77.06  67.34  116615
+weighted avg    99.73  99.62  99.67  116615
+Full-strong     32.91  59.69  42.42  0
+Full-soft       36.32  65.89  46.83  0
+
+== Final MEAN Performance
+I-ALTLEX         30.18 ( 0.86)   44.49 ( 4.98)   35.85 ( 1.73)
+O                99.88 ( 0.01)   99.76 ( 0.03)   99.82 ( 0.01)
+S-ALTLEX         53.75 ( 4.72)   78.67 ( 3.06)   63.69 ( 3.19)
+macro avg        61.27 ( 1.63)   74.31 ( 2.48)   66.45 ( 1.31)
+weighted avg     99.72 ( 0.01)   99.65 ( 0.02)   99.68 ( 0.01)
+Full-strong      35.58 ( 2.18)   57.52 ( 2.75)   43.85 ( 0.98)
+Full-soft        38.29 ( 1.94)   62.02 ( 4.33)   47.22 ( 1.42)
+
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-xl/0.5/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.5/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.5/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.5/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.5/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+I-ALTLEX        33.10  41.85  36.96  227
+O               99.88  99.81  99.84  116328
+S-ALTLEX        60.76  80.00  69.06  60
+macro avg       64.58  73.89  68.62  116615
+weighted avg    99.73  99.69  99.71  116615
+Full-strong     41.76  58.91  48.87  0
+Full-soft       43.96  62.02  51.45  0
+
+=== Evaluate models: [1]
+I-ALTLEX        31.56  36.56  33.88  227
+O               99.87  99.82  99.84  116328
+S-ALTLEX        60.00  80.00  68.57  60
+macro avg       63.81  72.13  67.43  116615
+weighted avg    99.71  99.69  99.70  116615
+Full-strong     39.23  55.04  45.81  0
+Full-soft       42.54  59.69  49.68  0
+
+=== Evaluate models: [2]
+67it [00:36,  1.86it/s]
+I-ALTLEX        28.72  36.56  32.17  227
+O               99.87  99.80  99.83  116328
+S-ALTLEX        59.74  76.67  67.15  60
+macro avg       62.78  71.01  66.39  116615
+weighted avg    99.71  99.66  99.68  116615
+Full-strong     38.04  54.26  44.73  0
+Full-soft       41.30  58.91  48.56  0
+
+=== Evaluate models: [3]
+67it [00:36,  1.86it/s]
+I-ALTLEX        32.09  37.89  34.75  227
+O               99.87  99.82  99.84  116328
+S-ALTLEX        63.89  76.67  69.70  60
+macro avg       65.28  71.46  68.10  116615
+weighted avg    99.72  99.69  99.70  116615
+Full-strong     40.46  54.26  46.36  0
+Full-soft       43.93  58.91  50.33  0
+
+=== Evaluate models: [4]
+67it [00:36,  1.85it/s]
+I-ALTLEX        31.13  41.41  35.54  227
+O               99.88  99.79  99.83  116328
+S-ALTLEX        60.76  80.00  69.06  60
+macro avg       63.92  73.73  68.15  116615
+weighted avg    99.72  99.67  99.69  116615
+Full-strong     37.24  56.59  44.92  0
+Full-soft       40.82  62.02  49.23  0
+
+== Final MEAN Performance
+I-ALTLEX         31.32 ( 1.46)   38.85 ( 2.32)   34.66 ( 1.61)
+O                99.87 ( 0.01)   99.81 ( 0.01)   99.84 ( 0.01)
+S-ALTLEX         61.03 ( 1.49)   78.67 ( 1.63)   68.71 ( 0.86)
+macro avg        64.07 ( 0.84)   72.44 ( 1.17)   67.74 ( 0.78)
+weighted avg     99.72 ( 0.01)   99.68 ( 0.01)   99.70 ( 0.01)
+Full-strong      39.35 ( 1.62)   55.81 ( 1.77)   46.14 ( 1.49)
+Full-soft        42.51 ( 1.30)   60.31 ( 1.42)   49.85 ( 0.99)
+
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-xl/0.6/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.6/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.6/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.6/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.6/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:38,  1.75it/s]
+I-ALTLEX        36.94  36.12  36.53  227
+O               99.87  99.86  99.86  116328
+S-ALTLEX        68.12  78.33  72.87  60
+macro avg       68.31  71.44  69.75  116615
+weighted avg    99.73  99.73  99.73  116615
+Full-strong     43.40  53.49  47.92  0
+Full-soft       47.17  58.14  52.08  0
+
+=== Evaluate models: [1]
+67it [00:37,  1.79it/s]
+I-ALTLEX        32.94  36.56  34.66  227
+O               99.87  99.84  99.85  116328
+S-ALTLEX        67.14  78.33  72.31  60
+macro avg       66.65  71.58  68.94  116615
+weighted avg    99.72  99.70  99.71  116615
+Full-strong     42.11  55.81  48.00  0
+Full-soft       44.44  58.91  50.67  0
+
+=== Evaluate models: [2]
+67it [00:37,  1.78it/s]
+I-ALTLEX        33.45  41.41  37.01  227
+O               99.87  99.82  99.85  116328
+S-ALTLEX        65.71  76.67  70.77  60
+macro avg       66.35  72.63  69.21  116615
+weighted avg    99.73  99.69  99.71  116615
+Full-strong     41.95  56.59  48.18  0
+Full-soft       44.83  60.47  51.49  0
+
+=== Evaluate models: [3]
+67it [00:37,  1.78it/s]
+I-ALTLEX        28.36  33.48  30.71  227
+O               99.86  99.82  99.84  116328
+S-ALTLEX        67.16  75.00  70.87  60
+macro avg       65.13  69.43  67.14  116615
+weighted avg    99.70  99.67  99.69  116615
+Full-strong     38.76  53.49  44.95  0
+Full-soft       40.45  55.81  46.91  0
+
+=== Evaluate models: [4]
+67it [00:37,  1.77it/s]
+I-ALTLEX        32.59  38.77  35.41  227
+O               99.87  99.82  99.85  116328
+S-ALTLEX        65.75  80.00  72.18  60
+macro avg       66.07  72.86  69.15  116615
+weighted avg    99.72  99.69  99.71  116615
+Full-strong     41.48  56.59  47.87  0
+Full-soft       43.75  59.69  50.49  0
+
+== Final MEAN Performance
+I-ALTLEX         32.86 ( 2.73)   37.27 ( 2.67)   34.86 ( 2.24)
+O                99.87 ( 0.01)   99.83 ( 0.02)   99.85 ( 0.01)
+S-ALTLEX         66.78 ( 0.92)   77.67 ( 1.70)   71.80 ( 0.83)
+macro avg        66.50 ( 1.04)   71.59 ( 1.22)   68.84 ( 0.89)
+weighted avg     99.72 ( 0.01)   99.70 ( 0.02)   99.71 ( 0.01)
+Full-strong      41.54 ( 1.53)   55.19 ( 1.42)   47.38 ( 1.22)
+Full-soft        44.13 ( 2.17)   58.60 ( 1.60)   50.33 ( 1.80)
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-xl/0.7/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.7/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.7/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.7/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.7/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:55,  1.20it/s]
+I-ALTLEX        39.17  37.44  38.29  227
+O               99.87  99.87  99.87  116328
+S-ALTLEX        64.71  73.33  68.75  60
+macro avg       67.91  70.22  68.97  116615
+weighted avg    99.73  99.73  99.73  116615
+Full-strong     43.87  52.71  47.89  0
+Full-soft       45.81  55.04  50.00  0
+
+=== Evaluate models: [1]
+67it [00:54,  1.23it/s]
+I-ALTLEX        33.33  36.12  34.67  227
+O               99.87  99.84  99.85  116328
+S-ALTLEX        66.67  76.67  71.32  60
+macro avg       66.62  70.88  68.61  116615
+weighted avg    99.72  99.71  99.71  116615
+Full-strong     41.42  54.26  46.98  0
+Full-soft       43.20  56.59  48.99  0
+
+=== Evaluate models: [2]
+67it [00:54,  1.23it/s]
+I-ALTLEX        37.80  40.97  39.32  227
+O               99.87  99.85  99.86  116328
+S-ALTLEX        68.25  71.67  69.92  60
+macro avg       68.64  70.83  69.70  116615
+weighted avg    99.73  99.72  99.73  116615
+Full-strong     44.59  54.26  48.95  0
+Full-soft       45.86  55.81  50.35  0
+
+=== Evaluate models: [3]
+67it [00:54,  1.23it/s]
+I-ALTLEX        33.08  38.77  35.70  227
+O               99.87  99.83  99.85  116328
+S-ALTLEX        64.71  73.33  68.75  60
+macro avg       65.89  70.64  68.10  116615
+weighted avg    99.72  99.70  99.71  116615
+Full-strong     37.85  51.94  43.79  0
+Full-soft       40.68  55.81  47.06  0
+
+=== Evaluate models: [4]
+67it [00:54,  1.23it/s]
+I-ALTLEX        36.55  40.09  38.24  227
+O               99.87  99.85  99.86  116328
+S-ALTLEX        66.15  71.67  68.80  60
+macro avg       67.52  70.53  68.96  116615
+weighted avg    99.73  99.72  99.72  116615
+Full-strong     39.88  51.94  45.12  0
+Full-soft       42.86  55.81  48.48  0
+
+== Final MEAN Performance
+I-ALTLEX         35.99 ( 2.42)   38.68 ( 1.75)   37.24 ( 1.75)
+O                99.87 ( 0.00)   99.85 ( 0.01)   99.86 ( 0.01)
+S-ALTLEX         66.10 ( 1.33)   73.33 ( 1.83)   69.51 ( 1.01)
+macro avg        67.32 ( 0.97)   70.62 ( 0.24)   68.87 ( 0.52)
+weighted avg     99.73 ( 0.01)   99.71 ( 0.01)   99.72 ( 0.01)
+Full-strong      41.52 ( 2.49)   53.02 ( 1.05)   46.55 ( 1.87)
+Full-soft        43.68 ( 1.96)   55.81 ( 0.49)   48.98 ( 1.17)
+
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-xl/0.8/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.8/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.8/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.8/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.8/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:55,  1.20it/s]
+I-ALTLEX        38.21  41.41  39.75  227
+O               99.87  99.85  99.86  116328
+S-ALTLEX        66.67  70.00  68.29  60
+macro avg       68.25  70.42  69.30  116615
+weighted avg    99.73  99.72  99.73  116615
+Full-strong     44.03  54.26  48.61  0
+Full-soft       45.91  56.59  50.69  0
+
+=== Evaluate models: [1]
+67it [00:54,  1.23it/s]
+I-ALTLEX        37.81  33.48  35.51  227
+O               99.86  99.88  99.87  116328
+S-ALTLEX        70.97  73.33  72.13  60
+macro avg       69.55  68.90  69.17  116615
+weighted avg    99.72  99.73  99.73  116615
+Full-strong     46.81  51.16  48.89  0
+Full-soft       49.65  54.26  51.85  0
+
+=== Evaluate models: [2]
+67it [00:54,  1.23it/s]
+I-ALTLEX        33.33  37.44  35.27  227
+O               99.87  99.84  99.85  116328
+S-ALTLEX        67.74  70.00  68.85  60
+macro avg       66.98  69.09  67.99  116615
+weighted avg    99.72  99.70  99.71  116615
+Full-strong     38.79  49.61  43.54  0
+Full-soft       41.82  53.49  46.94  0
+
+=== Evaluate models: [3]
+67it [00:54,  1.23it/s]
+I-ALTLEX        37.40  40.53  38.90  227
+O               99.87  99.85  99.86  116328
+S-ALTLEX        64.62  70.00  67.20  60
+macro avg       67.29  70.13  68.65  116615
+weighted avg    99.73  99.72  99.72  116615
+Full-strong     38.92  50.39  43.92  0
+Full-soft       41.32  53.49  46.62  0
+
+=== Evaluate models: [4]
+67it [00:54,  1.23it/s]
+I-ALTLEX        39.11  38.77  38.94  227
+O               99.87  99.87  99.87  116328
+S-ALTLEX        67.19  71.67  69.35  60
+macro avg       68.72  70.10  69.39  116615
+weighted avg    99.73  99.73  99.73  116615
+Full-strong     43.04  52.71  47.39  0
+Full-soft       44.30  54.26  48.78  0
+
+== Final MEAN Performance
+I-ALTLEX         37.17 ( 2.00)   38.33 ( 2.79)   37.67 ( 1.89)
+O                99.87 ( 0.01)   99.86 ( 0.01)   99.86 ( 0.01)
+S-ALTLEX         67.44 ( 2.06)   71.00 ( 1.33)   69.17 ( 1.65)
+macro avg        68.16 ( 0.94)   69.73 ( 0.61)   68.90 ( 0.52)
+weighted avg     99.73 ( 0.01)   99.72 ( 0.01)   99.72 ( 0.01)
+Full-strong      42.32 ( 3.09)   51.63 ( 1.67)   46.47 ( 2.30)
+Full-soft        44.60 ( 3.03)   54.42 ( 1.14)   48.98 ( 2.05)
+
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-xl/0.9/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.9/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.9/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.9/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-xl/0.9/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:55,  1.20it/s]
+I-ALTLEX        32.67  36.12  34.31  227
+O               99.86  99.84  99.85  116328
+S-ALTLEX        68.25  71.67  69.92  60
+macro avg       66.93  69.21  68.03  116615
+weighted avg    99.72  99.70  99.71  116615
+Full-strong     40.00  49.61  44.29  0
+Full-soft       43.12  53.49  47.75  0
+
+=== Evaluate models: [1]
+67it [00:54,  1.23it/s]
+I-ALTLEX        34.70  40.97  37.58  227
+O               99.87  99.83  99.85  116328
+S-ALTLEX        65.15  71.67  68.25  60
+macro avg       66.57  70.82  68.56  116615
+weighted avg    99.73  99.70  99.71  116615
+Full-strong     39.88  53.49  45.70  0
+Full-soft       42.20  56.59  48.34  0
+
+=== Evaluate models: [2]
+67it [00:54,  1.23it/s]
+I-ALTLEX        34.80  38.33  36.48  227
+O               99.87  99.84  99.85  116328
+S-ALTLEX        70.49  71.67  71.07  60
+macro avg       68.39  69.95  69.14  116615
+weighted avg    99.72  99.71  99.72  116615
+Full-strong     41.82  53.49  46.94  0
+Full-soft       43.03  55.04  48.30  0
+
+=== Evaluate models: [3]
+67it [00:54,  1.23it/s]
+I-ALTLEX        28.66  42.29  34.16  227
+O               99.88  99.78  99.83  116328
+S-ALTLEX        70.31  75.00  72.58  60
+macro avg       66.28  72.36  68.86  116615
+weighted avg    99.72  99.66  99.69  116615
+Full-strong     35.45  51.94  42.14  0
+Full-soft       38.62  56.59  45.91  0
+
+=== Evaluate models: [4]
+67it [00:54,  1.23it/s]
+I-ALTLEX        43.48  35.24  38.93  227
+O               99.86  99.90  99.88  116328
+S-ALTLEX        70.31  75.00  72.58  60
+macro avg       71.22  70.05  70.46  116615
+weighted avg    99.74  99.76  99.75  116615
+Full-strong     47.83  51.16  49.44  0
+Full-soft       50.72  54.26  52.43  0
+
+== Final MEAN Performance
+I-ALTLEX         34.86 ( 4.85)   38.59 ( 2.71)   36.29 ( 1.85)
+O                99.87 ( 0.01)   99.84 ( 0.04)   99.85 ( 0.02)
+S-ALTLEX         68.90 ( 2.05)   73.00 ( 1.63)   70.88 ( 1.65)
+macro avg        67.88 ( 1.82)   70.48 ( 1.07)   69.01 ( 0.81)
+weighted avg     99.73 ( 0.01)   99.71 ( 0.03)   99.71 ( 0.02)
+Full-strong      41.00 ( 4.01)   51.94 ( 1.47)   45.70 ( 2.46)
+Full-soft        43.54 ( 3.95)   55.19 ( 1.24)   48.55 ( 2.14)
+
+
+0.4  &  38.29 (1.94)  &  62.02 (4.33)  &  47.22 (1.42)  &  35.58 (2.18)  &  57.52 (2.75)  &  43.85 (0.98)  \\
+0.5  &  42.51 (1.30)  &  60.31 (1.42)  &  49.85 (0.99)  &  39.35 (1.62)  &  55.81 (1.77)  &  46.14 (1.49)  \\
+0.6  &  44.13 (2.17)  &  58.60 (1.60)  &  50.33 (1.80)  &  41.54 (1.53)  &  55.19 (1.42)  &  47.38 (1.22)  \\
+0.7  &  43.68 (1.96)  &  55.81 (0.49)  &  48.98 (1.17)  &  41.52 (2.49)  &  53.02 (1.05)  &  46.55 (1.87)  \\
+0.8  &  44.60 (3.03)  &  54.42 (1.14)  &  48.98 (2.05)  &  42.32 (3.09)  &  51.63 (1.67)  &  46.47 (2.30)  \\
+0.9  &  43.54 (3.95)  &  55.19 (1.24)  &  48.55 (2.14)  &  41.00 (4.01)  &  51.94 (1.47)  &  45.70 (2.46)  \\
+
+
+Document Limit 2500
+
+{}   &  2500  &  5000  &  10000 &  42000   \\
+\midrule
+0.4  &  1973  &  3883  &  7751  &  123595  \\
+0.5  &  1423  &  2816  &  5690  &  90016   \\
+0.6  &  572   &  1110  &  2256  &  37472   \\
+0.7  &  308   &  605   &  1205  &  19805   \\
+0.8  &  148   &  282   &  607   &  10216   \\
+0.9  &  46    &  91    &  200   &  3495    \\
+
+Document Limit 2500
+0.4  &  1973 (821) & 3883 (1567)  &  7751 (3048)  &  123595 (50238)  \\
+0.5  &  1423 (352) & 2816 (655)   &  5690 (1279)  &  90016 (21105)   \\
+0.6  &  572 (165)  & 1110 (301)   &  2256 (573)   &  37472 (10110)   \\
+0.7  &  308 (105)  & 605 (191)    &  1205 (347)   &  19805 (6135)    \\
+0.8  &  148 (60)   & 282 (95)     &  607 (194)    &  10216 (3735)    \\
+0.9  &  46 (18)    & 91 (30)      &  200 (63)     &  3495 (1422)     \\
+
+##
+##
+## S 2500
+##
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-s/0.4/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.4/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.4/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.4/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.4/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:37,  1.81it/s]
+I-ALTLEX        29.51  45.37  35.76  227
+O               99.88  99.77  99.82  116328
+S-ALTLEX        65.62  70.00  67.74  60
+macro avg       65.01  71.71  67.78  116615
+weighted avg    99.72  99.65  99.68  116615
+Full-strong     33.33  51.94  40.61  0
+Full-soft       35.32  55.04  43.03  0
+
+=== Evaluate models: [1]
+67it [00:36,  1.85it/s]
+I-ALTLEX        29.34  40.97  34.19  227
+O               99.87  99.79  99.83  116328
+S-ALTLEX        63.77  73.33  68.22  60
+macro avg       64.33  71.36  67.41  116615
+weighted avg    99.72  99.66  99.68  116615
+Full-strong     35.26  51.94  42.01  0
+Full-soft       37.89  55.81  45.14  0
+
+=== Evaluate models: [2]
+67it [00:36,  1.85it/s]
+I-ALTLEX        32.14  35.68  33.82  227
+O               99.86  99.83  99.84  116328
+S-ALTLEX        57.33  71.67  63.70  60
+macro avg       63.11  69.06  65.79  116615
+weighted avg    99.71  99.69  99.70  116615
+Full-strong     36.93  50.39  42.62  0
+Full-soft       38.64  52.71  44.59  0
+
+=== Evaluate models: [3]
+67it [00:36,  1.85it/s]
+I-ALTLEX        29.73  38.77  33.65  227
+O               99.87  99.79  99.83  116328
+S-ALTLEX        51.65  78.33  62.25  60
+macro avg       60.42  72.29  65.24  116615
+weighted avg    99.71  99.66  99.68  116615
+Full-strong     32.37  51.94  39.88  0
+Full-soft       34.78  55.81  42.86  0
+
+=== Evaluate models: [4]
+67it [00:36,  1.84it/s]
+I-ALTLEX        28.17  44.05  34.36  227
+O               99.88  99.75  99.82  116328
+S-ALTLEX        56.25  75.00  64.29  60
+macro avg       61.43  72.93  66.16  116615
+weighted avg    99.72  99.63  99.67  116615
+Full-strong     33.49  54.26  41.42  0
+Full-soft       35.89  58.14  44.38  0
+
+== Final MEAN Performance
+I-ALTLEX         29.78 ( 1.30)   40.97 ( 3.51)   34.36 ( 0.75)
+O                99.87 ( 0.01)   99.78 ( 0.02)   99.83 ( 0.01)
+S-ALTLEX         58.92 ( 5.12)   73.67 ( 2.87)   65.24 ( 2.34)
+macro avg        62.86 ( 1.72)   71.47 ( 1.32)   66.48 ( 0.97)
+weighted avg     99.71 ( 0.01)   99.66 ( 0.02)   99.68 ( 0.01)
+Full-strong      34.28 ( 1.62)   52.09 ( 1.24)   41.31 ( 0.98)
+Full-soft        36.50 ( 1.50)   55.50 ( 1.74)   44.00 ( 0.90)
+
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-s/0.5/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.5/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.5/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.5/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.5/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:36,  1.81it/s]
+I-ALTLEX        35.68  31.28  33.33  227
+O               99.85  99.87  99.86  116328
+S-ALTLEX        64.29  75.00  69.23  60
+macro avg       66.61  68.72  67.48  116615
+weighted avg    99.71  99.72  99.72  116615
+Full-strong     40.91  48.84  44.52  0
+Full-soft       44.81  53.49  48.76  0
+
+=== Evaluate models: [1]
+67it [00:37,  1.80it/s]
+I-ALTLEX        27.45  43.17  33.56  227
+O               99.88  99.76  99.82  116328
+S-ALTLEX        67.12  81.67  73.68  60
+macro avg       64.82  74.87  69.02  116615
+weighted avg    99.72  99.64  99.68  116615
+Full-strong     33.64  57.36  42.41  0
+Full-soft       36.36  62.02  45.85  0
+
+=== Evaluate models: [2]
+67it [00:37,  1.80it/s]
+I-ALTLEX        29.51  45.37  35.76  227
+O               99.88  99.77  99.83  116328
+S-ALTLEX        67.19  71.67  69.35  60
+macro avg       65.53  72.27  68.31  116615
+weighted avg    99.73  99.65  99.69  116615
+Full-strong     35.86  55.04  43.43  0
+Full-soft       38.89  59.69  47.09  0
+
+=== Evaluate models: [3]
+67it [00:37,  1.80it/s]
+I-ALTLEX        28.53  47.14  35.55  227
+O               99.89  99.74  99.81  116328
+S-ALTLEX        58.23  76.67  66.19  60
+macro avg       62.22  74.52  67.18  116615
+weighted avg    99.73  99.63  99.67  116615
+Full-strong     32.02  56.59  40.90  0
+Full-soft       34.65  61.24  44.26  0
+
+=== Evaluate models: [4]
+67it [00:37,  1.79it/s]
+I-ALTLEX        33.33  45.81  38.59  227
+O               99.88  99.80  99.84  116328
+S-ALTLEX        64.29  75.00  69.23  60
+macro avg       65.83  73.54  69.22  116615
+weighted avg    99.73  99.68  99.71  116615
+Full-strong     36.36  55.81  44.04  0
+Full-soft       38.89  59.69  47.09  0
+
+== Final MEAN Performance
+I-ALTLEX         30.90 ( 3.10)   42.56 ( 5.78)   35.36 ( 1.90)
+O                99.88 ( 0.01)   99.79 ( 0.05)   99.83 ( 0.02)
+S-ALTLEX         64.22 ( 3.26)   76.00 ( 3.27)   69.54 ( 2.39)
+macro avg        65.00 ( 1.51)   72.78 ( 2.22)   68.24 ( 0.81)
+weighted avg     99.72 ( 0.01)   99.66 ( 0.04)   99.69 ( 0.02)
+Full-strong      35.76 ( 3.01)   54.73 ( 3.05)   43.06 ( 1.29)
+Full-soft        38.72 ( 3.44)   59.22 ( 3.01)   46.61 ( 1.50)
+
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-s/0.6/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.6/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.6/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.6/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.6/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:55,  1.20it/s]
+I-ALTLEX        34.16  42.29  37.80  227
+O               99.87  99.83  99.85  116328
+S-ALTLEX        69.35  71.67  70.49  60
+macro avg       67.80  71.26  69.38  116615
+weighted avg    99.73  99.70  99.71  116615
+Full-strong     40.70  54.26  46.51  0
+Full-soft       43.02  57.36  49.17  0
+
+=== Evaluate models: [1]
+67it [00:54,  1.22it/s]
+I-ALTLEX        36.72  28.63  32.18  227
+O               99.84  99.88  99.86  116328
+S-ALTLEX        63.49  66.67  65.04  60
+macro avg       66.69  65.06  65.69  116615
+weighted avg    99.70  99.73  99.71  116615
+Full-strong     42.45  45.74  44.03  0
+Full-soft       45.32  48.84  47.01  0
+
+=== Evaluate models: [2]
+67it [00:54,  1.23it/s]
+I-ALTLEX        32.84  39.21  35.74  227
+O               99.87  99.83  99.85  116328
+S-ALTLEX        72.73  66.67  69.57  60
+macro avg       68.48  68.57  68.39  116615
+weighted avg    99.72  99.70  99.71  116615
+Full-strong     41.51  51.16  45.83  0
+Full-soft       43.40  53.49  47.92  0
+
+=== Evaluate models: [3]
+67it [00:54,  1.22it/s]
+I-ALTLEX        34.13  37.89  35.91  227
+O               99.87  99.84  99.85  116328
+S-ALTLEX        63.77  73.33  68.22  60
+macro avg       65.92  70.35  67.99  116615
+weighted avg    99.72  99.70  99.71  116615
+Full-strong     38.01  50.39  43.33  0
+Full-soft       42.69  56.59  48.67  0
+
+=== Evaluate models: [4]
+67it [00:54,  1.23it/s]
+I-ALTLEX        30.00  35.68  32.60  227
+O               99.86  99.82  99.84  116328
+S-ALTLEX        67.65  76.67  71.88  60
+macro avg       65.84  70.72  68.10  116615
+weighted avg    99.71  99.68  99.70  116615
+Full-strong     37.91  53.49  44.37  0
+Full-soft       40.66  57.36  47.59  0
+
+== Final MEAN Performance
+I-ALTLEX         33.57 ( 2.19)   36.74 ( 4.58)   34.84 ( 2.14)
+O                99.86 ( 0.01)   99.84 ( 0.02)   99.85 ( 0.01)
+S-ALTLEX         67.40 ( 3.48)   71.00 ( 3.89)   69.04 ( 2.33)
+macro avg        66.94 ( 1.04)   69.19 ( 2.25)   67.91 ( 1.21)
+weighted avg     99.72 ( 0.01)   99.70 ( 0.02)   99.71 ( 0.01)
+Full-strong      40.12 ( 1.84)   51.01 ( 3.00)   44.82 ( 1.18)
+Full-soft        43.02 ( 1.49)   54.73 ( 3.27)   48.07 ( 0.77)
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-s/0.7/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.7/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.7/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.7/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.7/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:57,  1.17it/s]
+I-ALTLEX        31.63  46.26  37.57  227
+O               99.88  99.79  99.84  116328
+S-ALTLEX        64.29  75.00  69.23  60
+macro avg       65.27  73.68  68.88  116615
+weighted avg    99.73  99.67  99.70  116615
+Full-strong     33.02  55.04  41.28  0
+Full-soft       35.81  59.69  44.77  0
+
+=== Evaluate models: [1]
+67it [00:54,  1.23it/s]
+I-ALTLEX        35.51  38.33  36.86  227
+O               99.86  99.85  99.86  116328
+S-ALTLEX        62.90  65.00  63.93  60
+macro avg       66.09  67.72  66.88  116615
+weighted avg    99.72  99.71  99.71  116615
+Full-strong     37.35  48.06  42.03  0
+Full-soft       40.36  51.94  45.42  0
+
+=== Evaluate models: [2]
+67it [00:54,  1.23it/s]
+I-ALTLEX        39.24  27.31  32.21  227
+O               99.84  99.91  99.87  116328
+S-ALTLEX        73.58  65.00  69.03  60
+macro avg       70.89  64.07  67.04  116615
+weighted avg    99.71  99.75  99.73  116615
+Full-strong     49.57  44.19  46.72  0
+Full-soft       51.30  45.74  48.36  0
+
+=== Evaluate models: [3]
+67it [00:54,  1.23it/s]
+I-ALTLEX        27.11  39.65  32.20  227
+O               99.87  99.77  99.82  116328
+S-ALTLEX        63.24  71.67  67.19  60
+macro avg       63.40  70.36  66.40  116615
+weighted avg    99.71  99.64  99.67  116615
+Full-strong     32.66  50.39  39.63  0
+Full-soft       35.18  54.26  42.68  0
+
+=== Evaluate models: [4]
+67it [00:54,  1.22it/s]
+I-ALTLEX        33.46  37.44  35.34  227
+O               99.86  99.84  99.85  116328
+S-ALTLEX        67.19  71.67  69.35  60
+macro avg       66.84  69.65  68.18  116615
+weighted avg    99.72  99.70  99.71  116615
+Full-strong     37.87  49.61  42.95  0
+Full-soft       40.83  53.49  46.31  0
+
+== Final MEAN Performance
+I-ALTLEX         33.39 ( 4.03)   37.80 ( 6.09)   34.84 ( 2.27)
+O                99.86 ( 0.01)   99.83 ( 0.05)   99.85 ( 0.02)
+S-ALTLEX         66.24 ( 3.97)   69.67 ( 4.00)   67.75 ( 2.06)
+macro avg        66.50 ( 2.48)   69.10 ( 3.16)   67.48 ( 0.91)
+weighted avg     99.72 ( 0.01)   99.69 ( 0.04)   99.70 ( 0.02)
+Full-strong      38.09 ( 6.12)   49.46 ( 3.51)   42.52 ( 2.36)
+Full-soft        40.70 ( 5.78)   53.02 ( 4.48)   45.51 ( 1.86)
+
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-s/0.8/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.8/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.8/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.8/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.8/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:56,  1.18it/s]
+I-ALTLEX        39.78  31.72  35.29  227
+O               99.85  99.89  99.87  116328
+S-ALTLEX        71.19  70.00  70.59  60
+macro avg       70.27  67.20  68.58  116615
+weighted avg    99.72  99.74  99.73  116615
+Full-strong     45.19  47.29  46.21  0
+Full-soft       47.41  49.61  48.48  0
+
+=== Evaluate models: [1]
+67it [00:55,  1.20it/s]
+I-ALTLEX        32.17  36.56  34.23  227
+O               99.86  99.84  99.85  116328
+S-ALTLEX        70.69  68.33  69.49  60
+macro avg       67.57  68.24  67.86  116615
+weighted avg    99.71  99.70  99.70  116615
+Full-strong     37.28  48.84  42.28  0
+Full-soft       39.05  51.16  44.30  0
+
+=== Evaluate models: [2]
+67it [00:55,  1.21it/s]
+I-ALTLEX        33.70  40.97  36.98  227
+O               99.87  99.83  99.85  116328
+S-ALTLEX        75.47  66.67  70.80  60
+macro avg       69.68  69.16  69.21  116615
+weighted avg    99.73  99.70  99.71  116615
+Full-strong     40.72  52.71  45.95  0
+Full-soft       42.51  55.04  47.97  0
+
+=== Evaluate models: [3]
+67it [00:55,  1.21it/s]
+I-ALTLEX        34.07  33.92  34.00  227
+O               99.86  99.86  99.86  116328
+S-ALTLEX        69.49  68.33  68.91  60
+macro avg       67.81  67.37  67.59  116615
+weighted avg    99.71  99.71  99.71  116615
+Full-strong     39.02  49.61  43.69  0
+Full-soft       40.24  51.16  45.05  0
+
+=== Evaluate models: [4]
+67it [00:55,  1.21it/s]
+I-ALTLEX        35.71  39.65  37.58  227
+O               99.87  99.84  99.86  116328
+S-ALTLEX        67.74  70.00  68.85  60
+macro avg       67.77  69.83  68.76  116615
+weighted avg    99.73  99.71  99.72  116615
+Full-strong     38.24  50.39  43.48  0
+Full-soft       41.76  55.04  47.49  0
+
+== Final MEAN Performance
+I-ALTLEX         35.09 ( 2.60)   36.56 ( 3.45)   35.61 ( 1.44)
+O                99.86 ( 0.01)   99.85 ( 0.02)   99.86 ( 0.01)
+S-ALTLEX         70.92 ( 2.57)   68.67 ( 1.25)   69.73 ( 0.82)
+macro avg        68.62 ( 1.12)   68.36 ( 1.01)   68.40 ( 0.60)
+weighted avg     99.72 ( 0.01)   99.71 ( 0.02)   99.72 ( 0.01)
+Full-strong      40.09 ( 2.79)   49.77 ( 1.79)   44.32 ( 1.52)
+Full-soft        42.20 ( 2.87)   52.40 ( 2.23)   46.66 ( 1.67)
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-s/0.9/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.9/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.9/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.9/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-s/0.9/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:55,  1.20it/s]
+I-ALTLEX        31.65  44.05  36.83  227
+O               99.88  99.80  99.84  116328
+S-ALTLEX        63.77  73.33  68.22  60
+macro avg       65.10  72.39  68.30  116615
+weighted avg    99.73  99.67  99.70  116615
+Full-strong     35.57  53.49  42.72  0
+Full-soft       38.14  57.36  45.82  0
+
+=== Evaluate models: [1]
+67it [00:54,  1.23it/s]
+I-ALTLEX        32.59  32.16  32.37  227
+O               99.85  99.86  99.86  116328
+S-ALTLEX        74.00  61.67  67.27  60
+macro avg       68.81  64.56  66.50  116615
+weighted avg    99.71  99.71  99.71  116615
+Full-strong     38.93  44.96  41.73  0
+Full-soft       40.94  47.29  43.88  0
+
+=== Evaluate models: [2]
+67it [00:54,  1.23it/s]
+I-ALTLEX        32.61  39.65  35.79  227
+O               99.87  99.83  99.85  116328
+S-ALTLEX        72.55  61.67  66.67  60
+macro avg       68.34  67.05  67.43  116615
+weighted avg    99.72  99.69  99.71  116615
+Full-strong     37.50  48.84  42.42  0
+Full-soft       41.07  53.49  46.46  0
+
+=== Evaluate models: [3]
+67it [00:54,  1.22it/s]
+I-ALTLEX        28.53  42.73  34.22  227
+O               99.88  99.78  99.83  116328
+S-ALTLEX        69.23  75.00  72.00  60
+macro avg       65.88  72.50  68.68  116615
+weighted avg    99.72  99.65  99.68  116615
+Full-strong     34.50  53.49  41.95  0
+Full-soft       36.00  55.81  43.77  0
+
+=== Evaluate models: [4]
+67it [00:54,  1.23it/s]
+I-ALTLEX        42.61  33.04  37.22  227
+O               99.86  99.89  99.87  116328
+S-ALTLEX        61.43  71.67  66.15  60
+macro avg       67.97  68.20  67.75  116615
+weighted avg    99.72  99.75  99.73  116615
+Full-strong     44.52  50.39  47.27  0
+Full-soft       45.89  51.94  48.73  0
+
+== Final MEAN Performance
+I-ALTLEX         33.60 ( 4.75)   38.33 ( 4.90)   35.29 ( 1.79)
+O                99.87 ( 0.01)   99.83 ( 0.04)   99.85 ( 0.02)
+S-ALTLEX         68.20 ( 4.88)   68.67 ( 5.81)   68.06 ( 2.09)
+macro avg        67.22 ( 1.46)   68.94 ( 3.10)   67.73 ( 0.75)
+weighted avg     99.72 ( 0.01)   99.70 ( 0.03)   99.71 ( 0.02)
+Full-strong      38.20 ( 3.51)   50.23 ( 3.19)   43.22 ( 2.06)
+Full-soft        40.41 ( 3.33)   53.18 ( 3.49)   45.73 ( 1.83)
+
+
+##
+##
+## M 5000
+##
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-m/0.4/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.4/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.4/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.4/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.4/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:37,  1.77it/s]
+I-ALTLEX        27.61  43.17  33.68  227
+O               99.88  99.75  99.81  116328
+S-ALTLEX        58.67  73.33  65.19  60
+macro avg       62.05  72.09  66.23  116615
+weighted avg    99.71  99.63  99.67  116615
+Full-strong     32.24  53.49  40.23  0
+Full-soft       34.58  57.36  43.15  0
+
+=== Evaluate models: [1]
+67it [00:37,  1.79it/s]
+I-ALTLEX        25.35  39.65  30.93  227
+O               99.87  99.75  99.81  116328
+S-ALTLEX        65.75  80.00  72.18  60
+macro avg       63.66  73.13  67.64  116615
+weighted avg    99.71  99.62  99.66  116615
+Full-strong     35.10  56.59  43.32  0
+Full-soft       36.54  58.91  45.10  0
+
+=== Evaluate models: [2]
+67it [00:37,  1.79it/s]
+I-ALTLEX        28.15  33.48  30.58  227
+O               99.86  99.81  99.83  116328
+S-ALTLEX        60.27  73.33  66.17  60
+macro avg       62.76  68.87  65.53  116615
+weighted avg    99.70  99.67  99.68  116615
+Full-strong     35.39  48.84  41.04  0
+Full-soft       37.64  51.94  43.65  0
+
+=== Evaluate models: [3]
+67it [00:37,  1.78it/s]
+I-ALTLEX        24.75  44.49  31.81  227
+O               99.88  99.71  99.79  116328
+S-ALTLEX        58.54  80.00  67.61  60
+macro avg       61.06  74.73  66.40  116615
+weighted avg    99.71  99.59  99.65  116615
+Full-strong     30.86  58.14  40.32  0
+Full-soft       32.92  62.02  43.01  0
+
+=== Evaluate models: [4]
+67it [00:37,  1.78it/s]
+I-ALTLEX        26.88  47.14  34.24  227
+O               99.89  99.72  99.80  116328
+S-ALTLEX        55.95  78.33  65.28  60
+macro avg       60.91  75.06  66.44  116615
+weighted avg    99.72  99.61  99.66  116615
+Full-strong     29.83  55.04  38.69  0
+Full-soft       33.19  61.24  43.05  0
+
+== Final MEAN Performance
+I-ALTLEX         26.55 ( 1.30)   41.59 ( 4.72)   32.25 ( 1.46)
+O                99.87 ( 0.01)   99.75 ( 0.04)   99.81 ( 0.01)
+S-ALTLEX         59.84 ( 3.27)   77.00 ( 3.06)   67.28 ( 2.60)
+macro avg        62.09 ( 1.04)   72.78 ( 2.23)   66.45 ( 0.68)
+weighted avg     99.71 ( 0.01)   99.62 ( 0.03)   99.66 ( 0.01)
+Full-strong      32.69 ( 2.23)   54.42 ( 3.19)   40.72 ( 1.51)
+Full-soft        34.97 ( 1.85)   58.29 ( 3.58)   43.59 ( 0.79)
+
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-m/0.5/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.5/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.5/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.5/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.5/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:37,  1.81it/s]
+I-ALTLEX        27.03  35.24  30.59  227
+O               99.86  99.80  99.83  116328
+S-ALTLEX        69.84  73.33  71.54  60
+macro avg       65.58  69.46  67.32  116615
+weighted avg    99.70  99.66  99.68  116615
+Full-strong     38.33  53.49  44.66  0
+Full-soft       40.56  56.59  47.25  0
+
+=== Evaluate models: [1]
+67it [00:36,  1.84it/s]
+I-ALTLEX        29.91  30.84  30.37  227
+O               99.85  99.84  99.85  116328
+S-ALTLEX        65.67  73.33  69.29  60
+macro avg       65.15  68.00  66.50  116615
+weighted avg    99.70  99.69  99.70  116615
+Full-strong     38.65  48.84  43.15  0
+Full-soft       40.49  51.16  45.21  0
+
+=== Evaluate models: [2]
+67it [00:36,  1.83it/s]
+I-ALTLEX        30.20  39.65  34.29  227
+O               99.87  99.80  99.83  116328
+S-ALTLEX        60.56  71.67  65.65  60
+macro avg       63.54  70.37  66.59  116615
+weighted avg    99.71  99.67  99.69  116615
+Full-strong     36.96  52.71  43.45  0
+Full-soft       39.13  55.81  46.01  0
+
+=== Evaluate models: [3]
+67it [00:36,  1.82it/s]
+I-ALTLEX        29.19  47.58  36.18  227
+O               99.89  99.76  99.82  116328
+S-ALTLEX        67.65  76.67  71.88  60
+macro avg       65.57  74.67  69.29  116615
+weighted avg    99.73  99.64  99.68  116615
+Full-strong     32.88  56.59  41.60  0
+Full-soft       36.49  62.79  46.15  0
+
+=== Evaluate models: [4]
+67it [00:36,  1.82it/s]
+I-ALTLEX        25.92  40.53  31.62  227
+O               99.87  99.76  99.81  116328
+S-ALTLEX        65.67  73.33  69.29  60
+macro avg       63.82  71.21  66.91  116615
+weighted avg    99.71  99.63  99.66  116615
+Full-strong     34.62  55.81  42.73  0
+Full-soft       35.58  57.36  43.92  0
+
+== Final MEAN Performance
+I-ALTLEX         28.45 ( 1.69)   38.77 ( 5.60)   32.61 ( 2.26)
+O                99.87 ( 0.01)   99.79 ( 0.03)   99.83 ( 0.01)
+S-ALTLEX         65.88 ( 3.07)   73.67 ( 1.63)   69.53 ( 2.22)
+macro avg        64.73 ( 0.88)   70.74 ( 2.23)   67.32 ( 1.03)
+weighted avg     99.71 ( 0.01)   99.66 ( 0.02)   99.68 ( 0.01)
+Full-strong      36.29 ( 2.22)   53.49 ( 2.73)   43.12 ( 1.00)
+Full-soft        38.45 ( 2.06)   56.74 ( 3.71)   45.71 ( 1.11)
+
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-m/0.6/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.6/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.6/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.6/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.6/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:56,  1.18it/s]
+I-ALTLEX        35.38  43.17  38.89  227
+O               99.88  99.82  99.85  116328
+S-ALTLEX        62.16  76.67  68.66  60
+macro avg       65.81  73.22  69.13  116615
+weighted avg    99.73  99.70  99.72  116615
+Full-strong     39.34  55.81  46.15  0
+Full-soft       42.08  59.69  49.36  0
+
+=== Evaluate models: [1]
+67it [00:59,  1.13it/s]
+I-ALTLEX        31.02  37.44  33.93  227
+O               99.86  99.82  99.84  116328
+S-ALTLEX        69.35  71.67  70.49  60
+macro avg       66.75  69.64  68.09  116615
+weighted avg    99.72  99.69  99.70  116615
+Full-strong     36.72  50.39  42.48  0
+Full-soft       39.55  54.26  45.75  0
+
+=== Evaluate models: [2]
+67it [00:55,  1.21it/s]
+I-ALTLEX        34.29  42.29  37.87  227
+O               99.88  99.82  99.85  116328
+S-ALTLEX        62.67  78.33  69.63  60
+macro avg       65.61  73.48  69.12  116615
+weighted avg    99.73  99.70  99.71  116615
+Full-strong     36.90  53.49  43.67  0
+Full-soft       41.71  60.47  49.37  0
+
+=== Evaluate models: [3]
+67it [00:56,  1.19it/s]
+I-ALTLEX        31.02  37.44  33.93  227
+O               99.87  99.82  99.84  116328
+S-ALTLEX        68.18  75.00  71.43  60
+macro avg       66.36  70.76  68.40  116615
+weighted avg    99.72  99.69  99.70  116615
+Full-strong     36.22  51.94  42.68  0
+Full-soft       38.38  55.04  45.22  0
+
+=== Evaluate models: [4]
+67it [00:56,  1.19it/s]
+I-ALTLEX        31.85  40.97  35.84  227
+O               99.87  99.81  99.84  116328
+S-ALTLEX        64.86  80.00  71.64  60
+macro avg       65.53  73.59  69.11  116615
+weighted avg    99.72  99.68  99.70  116615
+Full-strong     38.27  58.14  46.15  0
+Full-soft       40.82  62.02  49.23  0
+
+== Final MEAN Performance
+I-ALTLEX         32.71 ( 1.79)   40.26 ( 2.41)   36.09 ( 2.02)
+O                99.87 ( 0.01)   99.82 ( 0.01)   99.85 ( 0.00)
+S-ALTLEX         65.45 ( 2.88)   76.33 ( 2.87)   70.37 ( 1.12)
+macro avg        66.01 ( 0.47)   72.14 ( 1.63)   68.77 ( 0.44)
+weighted avg     99.72 ( 0.01)   99.69 ( 0.01)   99.71 ( 0.01)
+Full-strong      37.49 ( 1.15)   53.95 ( 2.76)   44.23 ( 1.62)
+Full-soft        40.51 ( 1.38)   58.29 ( 3.08)   47.79 ( 1.89)
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-m/0.7/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.7/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.7/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.7/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.7/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:59,  1.12it/s]
+I-ALTLEX        36.96  29.96  33.09  227
+O               99.85  99.88  99.86  116328
+S-ALTLEX        61.43  71.67  66.15  60
+macro avg       66.08  67.17  66.37  116615
+weighted avg    99.71  99.73  99.72  116615
+Full-strong     41.38  46.51  43.80  0
+Full-soft       43.45  48.84  45.99  0
+
+=== Evaluate models: [1]
+67it [00:56,  1.19it/s]
+I-ALTLEX        30.95  40.09  34.93  227
+O               99.87  99.81  99.84  116328
+S-ALTLEX        71.67  71.67  71.67  60
+macro avg       67.50  70.52  68.81  116615
+weighted avg    99.72  99.68  99.70  116615
+Full-strong     36.81  51.94  43.09  0
+Full-soft       39.01  55.04  45.66  0
+
+=== Evaluate models: [2]
+67it [00:56,  1.19it/s]
+I-ALTLEX        29.57  39.21  33.71  227
+O               99.86  99.80  99.83  116328
+S-ALTLEX        67.86  63.33  65.52  60
+macro avg       65.76  67.45  66.35  116615
+weighted avg    99.71  99.67  99.69  116615
+Full-strong     38.32  49.61  43.24  0
+Full-soft       39.52  51.16  44.59  0
+
+=== Evaluate models: [3]
+67it [00:56,  1.19it/s]
+I-ALTLEX        25.68  49.78  33.88  227
+O               99.89  99.70  99.80  116328
+S-ALTLEX        66.67  70.00  68.29  60
+macro avg       64.08  73.16  67.32  116615
+weighted avg    99.73  99.59  99.65  116615
+Full-strong     30.17  54.26  38.78  0
+Full-soft       32.76  58.91  42.11  0
+
+=== Evaluate models: [4]
+67it [00:56,  1.19it/s]
+I-ALTLEX        30.00  40.97  34.64  227
+O               99.87  99.79  99.83  116328
+S-ALTLEX        63.89  76.67  69.70  60
+macro avg       64.59  72.48  68.06  116615
+weighted avg    99.72  99.67  99.69  116615
+Full-strong     36.60  55.04  43.96  0
+Full-soft       39.18  58.91  47.06  0
+
+== Final MEAN Performance
+I-ALTLEX         30.63 ( 3.64)   40.00 ( 6.29)   34.05 ( 0.66)
+O                99.87 ( 0.01)   99.80 ( 0.06)   99.83 ( 0.02)
+S-ALTLEX         66.30 ( 3.49)   70.67 ( 4.29)   68.27 ( 2.26)
+macro avg        65.60 ( 1.20)   70.16 ( 2.48)   67.38 ( 0.96)
+weighted avg     99.72 ( 0.01)   99.67 ( 0.04)   99.69 ( 0.02)
+Full-strong      36.66 ( 3.66)   51.47 ( 3.12)   42.57 ( 1.92)
+Full-soft        38.78 ( 3.43)   54.57 ( 4.06)   45.08 ( 1.68)
+
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-m/0.8/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.8/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.8/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.8/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.8/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:56,  1.19it/s]
+I-ALTLEX        35.98  41.85  38.70  227
+O               99.87  99.84  99.85  116328
+S-ALTLEX        65.08  68.33  66.67  60
+macro avg       66.98  70.01  68.41  116615
+weighted avg    99.73  99.71  99.72  116615
+Full-strong     39.05  51.16  44.30  0
+Full-soft       41.42  54.26  46.98  0
+
+=== Evaluate models: [1]
+67it [00:55,  1.21it/s]
+I-ALTLEX        30.29  45.37  36.33  227
+O               99.88  99.78  99.83  116328
+S-ALTLEX        67.69  73.33  70.40  60
+macro avg       65.96  72.83  68.85  116615
+weighted avg    99.73  99.66  99.69  116615
+Full-strong     33.66  52.71  41.09  0
+Full-soft       37.62  58.91  45.92  0
+
+=== Evaluate models: [2]
+67it [00:55,  1.20it/s]
+I-ALTLEX        29.17  37.00  32.62  227
+O               99.86  99.81  99.84  116328
+S-ALTLEX        71.67  71.67  71.67  60
+macro avg       66.90  69.49  68.04  116615
+weighted avg    99.71  99.67  99.69  116615
+Full-strong     38.24  50.39  43.48  0
+Full-soft       41.76  55.04  47.49  0
+
+=== Evaluate models: [3]
+67it [00:55,  1.21it/s]
+I-ALTLEX        32.82  37.44  34.98  227
+O               99.87  99.83  99.85  116328
+S-ALTLEX        61.97  73.33  67.18  60
+macro avg       64.89  70.20  67.33  116615
+weighted avg    99.72  99.69  99.70  116615
+Full-strong     36.31  50.39  42.21  0
+Full-soft       39.66  55.04  46.10  0
+
+=== Evaluate models: [4]
+67it [00:55,  1.20it/s]
+I-ALTLEX        31.52  35.68  33.47  227
+O               99.86  99.83  99.85  116328
+S-ALTLEX        65.22  75.00  69.77  60
+macro avg       65.53  70.17  67.69  116615
+weighted avg    99.71  99.69  99.70  116615
+Full-strong     33.69  48.84  39.87  0
+Full-soft       37.43  54.26  44.30  0
+
+== Final MEAN Performance
+I-ALTLEX         31.96 ( 2.35)   39.47 ( 3.61)   35.22 ( 2.15)
+O                99.87 ( 0.01)   99.82 ( 0.02)   99.84 ( 0.01)
+S-ALTLEX         66.33 ( 3.23)   72.33 ( 2.26)   69.14 ( 1.92)
+macro avg        66.05 ( 0.80)   70.54 ( 1.17)   68.07 ( 0.53)
+weighted avg     99.72 ( 0.01)   99.69 ( 0.02)   99.70 ( 0.01)
+Full-strong      36.19 ( 2.24)   50.70 ( 1.26)   42.19 ( 1.59)
+Full-soft        39.58 ( 1.82)   55.50 ( 1.74)   46.16 ( 1.09)
+
+Load Model(s)
+-- loaded models/self-ensemble-4/final-m/0.9/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.9/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.9/m3/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.9/m4/best_model_altlex_label
+-- loaded models/self-ensemble-4/final-m/0.9/m5/best_model_altlex_label
+
+=== Evaluate models: [0]
+67it [00:57,  1.17it/s]
+I-ALTLEX        40.28  37.44  38.81  227
+O               99.86  99.88  99.87  116328
+S-ALTLEX        69.81  61.67  65.49  60
+macro avg       69.98  66.33  68.06  116615
+weighted avg    99.73  99.74  99.73  116615
+Full-strong     41.30  44.19  42.70  0
+Full-soft       45.65  48.84  47.19  0
+
+=== Evaluate models: [1]
+67it [00:56,  1.19it/s]
+I-ALTLEX        40.74  29.07  33.93  227
+O               99.85  99.90  99.87  116328
+S-ALTLEX        67.74  70.00  68.85  60
+macro avg       69.44  66.33  67.55  116615
+weighted avg    99.72  99.75  99.73  116615
+Full-strong     43.41  43.41  43.41  0
+Full-soft       48.06  48.06  48.06  0
+
+=== Evaluate models: [2]
+67it [00:56,  1.19it/s]
+I-ALTLEX        30.82  41.41  35.34  227
+O               99.87  99.80  99.84  116328
+S-ALTLEX        66.67  70.00  68.29  60
+macro avg       65.79  70.40  67.82  116615
+weighted avg    99.72  99.67  99.70  116615
+Full-strong     36.26  51.16  42.44  0
+Full-soft       40.11  56.59  46.95  0
+
+=== Evaluate models: [3]
+67it [00:56,  1.19it/s]
+I-ALTLEX        30.97  42.29  35.75  227
+O               99.87  99.80  99.84  116328
+S-ALTLEX        71.67  71.67  71.67  60
+macro avg       67.50  71.25  69.09  116615
+weighted avg    99.73  99.68  99.70  116615
+Full-strong     36.31  50.39  42.21  0
+Full-soft       40.78  56.59  47.40  0
+
+=== Evaluate models: [4]
+67it [00:56,  1.19it/s]
+I-ALTLEX        31.73  43.61  36.73  227
+O               99.88  99.80  99.84  116328
+S-ALTLEX        68.18  75.00  71.43  60
+macro avg       66.60  72.80  69.33  116615
+weighted avg    99.73  99.68  99.70  116615
+Full-strong     36.55  55.81  44.17  0
+Full-soft       38.07  58.14  46.01  0
+
+== Final MEAN Performance
+I-ALTLEX         34.91 ( 4.59)   38.77 ( 5.26)   36.11 ( 1.62)
+O                99.87 ( 0.01)   99.84 ( 0.04)   99.85 ( 0.02)
+S-ALTLEX         68.81 ( 1.75)   69.67 ( 4.40)   69.15 ( 2.27)
+macro avg        67.86 ( 1.62)   69.42 ( 2.64)   68.37 ( 0.71)
+weighted avg     99.72 ( 0.00)   99.70 ( 0.03)   99.71 ( 0.02)
+Full-strong      38.77 ( 3.01)   48.99 ( 4.64)   42.99 ( 0.72)
+Full-soft        42.54 ( 3.72)   53.64 ( 4.29)   47.12 ( 0.67)
+
+
+
+
+
+
+
+
+0.4 &  36.50 (1.50)  &  55.50 (1.74)  &  44.00 (0.90)  &  34.28 (1.62)  &  52.09 (1.24)  &  41.31 (0.98)  \\
+0.5 &  38.72 (3.44)  &  59.22 (3.01)  &  46.61 (1.50)  &  35.76 (3.01)  &  54.73 (3.05)  &  43.06 (1.29)  \\
+0.6 &  43.02 (1.49) &  54.73 (3.27) &  48.07 (0.77)   &   40.12 (1.84)  &  51.01 (3.00)  &  44.82 (1.18)\\
+0.7 &  40.70 (5.78) &  53.02 (4.48) &  45.51 (1.86)   &   38.09 (6.12)  &  49.46 (3.51)  &  42.52 (2.36)  \\
+0.8 &  42.20 (2.87) &  52.40 (2.23) &  46.66 (1.67)   &   40.09 (2.79)  &  49.77 (1.79)  &  44.32 (1.52)  \\
+0.9 &  40.41 (3.33) &  53.18 (3.49) &  45.73 (1.83)   &   38.20 (3.51)  &  50.23 (3.19)  &  43.22 (2.06)  \\
+
+0.4 &  34.97 (1.85)  &  58.29 (3.58)  &  43.59 (0.79)  &  32.69 (2.23)  &  54.42 (3.19)  &  40.72 (1.51)  \\
+0.5 &  38.45 (2.06)  &  56.74 (3.71)  &  45.71 (1.11)  &  36.29 (2.22)  &  53.49 (2.73)  &  43.12 (1.00)  \\
+0.6 &  40.51 (1.38)   &  58.29 (3.08)   &  47.79 (1.89)  &  37.49 (1.15)   &  53.95 (2.76)   &  44.23 (1.62)  \\
+0.7 &  38.78 (3.43) &  54.57 (4.06) &  45.08 (1.68)   &   36.66 (3.66)  &  51.47 (3.12)  &  42.57 (1.92)  \\
+0.8 &  39.58 (1.82) &  55.50 (1.74) &  46.16 (1.09)   &   36.19 (2.24)  &  50.70 (1.26)  &  42.19 (1.59)  \\
+0.9 &  42.54 (3.72) &  53.64 (4.29) &  47.12 (0.67)   &   38.77 (3.01)  &  48.99 (4.64)  &  42.99 (0.72)  \\
+
+
+M  42.39  55.32  48.00  38.59  50.35  43.69
+M  54.78  73.26  62.69  50.87  68.02  58.21
+M  42.33  59.26  49.38  38.62  54.07  45.06
+M  50.00  44.17  46.91  46.53  41.10  43.65
+M  31.83  55.42  40.44  29.41  51.20  37.36
+M  51.75  52.48  52.11  47.55  48.23  47.89
+M  41.75  59.12  48.94  36.60  51.82  42.90
+M  41.21  54.84  47.06  40.00  53.23  45.67
+M  41.15  59.31  48.59  40.19  57.93  47.46
+M  41.05  57.35  47.85  36.84  51.47  42.94

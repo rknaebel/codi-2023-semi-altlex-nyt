@@ -140,11 +140,12 @@ def filter_relation_connectives(paragraph):
 @click.option('-l', '--limit', default=0, type=int)
 @click.option('-b', '--batch-size', default=32, type=int)
 @click.option('-p', '--positives-only', is_flag=True)
-@click.option('--is-relation-threshold', default=0.4, type=float)
+@click.option('--is-relation-threshold', default=0.1, type=float)
 @click.option('--sample-ratio', default=1.0, type=float)
 @click.option('--filter-connectives', is_flag=True)
 def main(corpus, save_path, replace, output_path, limit, batch_size, positives_only, is_relation_threshold,
          sample_ratio, filter_connectives):
+    sample_ratio = 1.0
     if output_path == '-':
         output = sys.stdout
     else:
@@ -167,8 +168,8 @@ def main(corpus, save_path, replace, output_path, limit, batch_size, positives_o
         if len(batch) == 0:
             break
         signals = signal_model.predict_paragraphs(batch, is_relation_threshold)
-        if filter_connectives:
-            signals = map(filter_relation_connectives, signals)
+        # if filter_connectives:
+        #     signals = map(filter_relation_connectives, signals)
         if positives_only:
             signals = filter(lambda s: len(s['relations']) > 0, signals)
         for sent in signals:

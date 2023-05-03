@@ -25,7 +25,7 @@ def compute_loss(num_labels, weights, logits, labels, device):
 @click.argument('corpus')
 @click.argument('predictions')
 @click.option('-b', '--batch-size', type=int, default=8)
-@click.option('--split-ratio', type=float, default=0.8)
+@click.option('--split-ratio', type=float, default=0.9)
 @click.option('--bert-model', default="roberta-base")
 @click.option('--save-path', default="")
 @click.option('--test-set', is_flag=True)

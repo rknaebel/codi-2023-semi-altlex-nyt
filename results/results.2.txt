@@ -1,0 +1,214 @@
++ python3 test_label.py pdtb3 -b 32 --save-path 'models/self-ensemble-4/sota/ensemble/1/m*' --random-seed 27832 --mode ensemble
+SAVE PATHS: [(0, 'models/self-ensemble-4/sota/ensemble/1/m1/best_model_altlex_label'), (1, 'models/self-ensemble-4/sota/ensemble/1/m2/best_model_altlex_label'), (2, 'models/self-ensemble-4/sota/ensemble/1/m3/best_model_altlex_label')]
+RANDOM SEED: 27832
+Load Model(s)
+-- loaded models/self-ensemble-4/sota/ensemble/1/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/1/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/1/m3/best_model_altlex_label
+
+=== Evaluate models: [0, 1, 2]
+I-ALTLEX        61.57  54.92  58.05  315
+O               99.88  99.90  99.89  131048
+S-ALTLEX        68.92  73.91  71.33  69
+macro avg       76.79  76.24  76.42  131432
+weighted avg    99.77  99.78  99.77  131432
+Full-strong     54.35  60.98  57.47  0
+Full-soft       60.33  67.68  63.79  0
+
++ python3 test_label.py pdtb3 -b 32 --save-path 'models/self-ensemble-4/sota/ensemble/2/m*' --random-seed 7403 --mode ensemble
+SAVE PATHS: [(0, 'models/self-ensemble-4/sota/ensemble/2/m1/best_model_altlex_label'), (1, 'models/self-ensemble-4/sota/ensemble/2/m2/best_model_altle
+x_label'), (2, 'models/self-ensemble-4/sota/ensemble/2/m3/best_model_altlex_label')]
+RANDOM SEED: 7403
+Load Model(s)
+-- loaded models/self-ensemble-4/sota/ensemble/2/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/2/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/2/m3/best_model_altlex_label
+
+=== Evaluate models: [0, 1, 2]
+I-ALTLEX        46.29  42.40  44.26  250
+O               99.87  99.89  99.88  126964
+S-ALTLEX        70.37  71.25  70.81  80
+macro avg       72.18  71.18  71.65  127294
+weighted avg    99.75  99.76  99.75  127294
+Full-strong     49.72  56.41  52.85  0
+Full-soft       51.98  58.97  55.26  0
+
++ python3 test_label.py pdtb3 -b 32 --save-path 'models/self-ensemble-4/sota/ensemble/3/m*' --random-seed 27948 --mode ensemble
+SAVE PATHS: [(0, 'models/self-ensemble-4/sota/ensemble/3/m1/best_model_altlex_label'), (1, 'models/self-ensemble-4/sota/ensemble/3/m2/best_model_altlex_label'), (2, 'models/self-ensemble-4/sota/ensemble/3/m3/best_model_altlex_label')]
+RANDOM SEED: 27948
+Load Model(s)
+-- loaded models/self-ensemble-4/sota/ensemble/3/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/3/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/3/m3/best_model_altlex_label
+
+=== Evaluate models: [0, 1, 2]
+I-ALTLEX        49.56  41.48  45.16  270
+O               99.86  99.88  99.87  117609
+S-ALTLEX        61.76  75.00  67.74  56
+macro avg       70.39  72.12  70.92  117935
+weighted avg    99.72  99.74  99.73  117935
+Full-strong     47.50  57.58  52.05  0
+Full-soft       49.38  59.85  54.11  0
+
++ python3 test_label.py pdtb3 -b 32 --save-path 'models/self-ensemble-4/sota/ensemble/4/m*' --random-seed 21507 --mode ensemble
+SAVE PATHS: [(0, 'models/self-ensemble-4/sota/ensemble/4/m1/best_model_altlex_label'), (1, 'models/self-ensemble-4/sota/ensemble/4/m2/best_model_altlex_label'), (2, 'models/self-ensemble-4/sota/ensemble/4/m3/best_model_altlex_label')]
+RANDOM SEED: 21507
+Load Model(s)
+-- loaded models/self-ensemble-4/sota/ensemble/4/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/4/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/4/m3/best_model_altlex_label
+
+=== Evaluate models: [0, 1, 2]
+I-ALTLEX        49.40  51.67  50.51  240
+O               99.88  99.87  99.87  107638
+S-ALTLEX        60.78  64.58  62.63  48
+macro avg       70.02  72.04  71.00  107926
+weighted avg    99.75  99.75  99.75  107926
+Full-strong     42.21  56.52  48.33  0
+Full-soft       44.81  60.00  51.30  0
+
++ python3 test_label.py pdtb3 -b 32 --save-path 'models/self-ensemble-4/sota/ensemble/5/m*' --random-seed 1522 --mode ensemble
+SAVE PATHS: [(0, 'models/self-ensemble-4/sota/ensemble/5/m1/best_model_altlex_label'), (1, 'models/self-ensemble-4/sota/ensemble/5/m2/best_model_altlex_label'), (2, 'models/self-ensemble-4/sota/ensemble/5/m3/best_model_altlex_label')]
+RANDOM SEED: 1522
+Load Model(s)
+-- loaded models/self-ensemble-4/sota/ensemble/5/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/5/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/5/m3/best_model_altlex_label
+
+=== Evaluate models: [0, 1, 2]
+I-ALTLEX        52.40  52.79  52.59  269
+O               99.88  99.87  99.88  118249
+S-ALTLEX        68.66  75.41  71.88  61
+macro avg       73.65  76.02  74.78  118579
+weighted avg    99.76  99.76  99.76  118579
+Full-strong     48.04  60.56  53.58  0
+Full-soft       51.40  64.79  57.32  0
+
++ python3 test_label.py pdtb3 -b 32 --save-path 'models/self-ensemble-4/sota/ensemble/6/m*' --random-seed 25144 --mode ensemble
+SAVE PATHS: [(0, 'models/self-ensemble-4/sota/ensemble/6/m1/best_model_altlex_label'), (1, 'models/self-ensemble-4/sota/ensemble/6/m2/best_model_altlex_label'), (2, 'models/self-ensemble-4/sota/ensemble/6/m3/best_model_altlex_label')]
+RANDOM SEED: 25144
+Load Model(s)
+-- loaded models/self-ensemble-4/sota/ensemble/6/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/6/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/6/m3/best_model_altlex_label
+
+=== Evaluate models: [0, 1, 2]
+I-ALTLEX        52.38  58.11  55.10  265
+O               99.89  99.87  99.88  120156
+S-ALTLEX        73.85  68.57  71.11  70
+macro avg       75.37  75.52  75.36  120491
+weighted avg    99.77  99.76  99.77  120491
+Full-strong     47.57  59.06  52.69  0
+Full-soft       51.89  64.43  57.49  0
+
++ python3 test_label.py pdtb3 -b 32 --save-path 'models/self-ensemble-4/sota/ensemble/7/m*' --random-seed 28926 --mode ensemble
+SAVE PATHS: [(0, 'models/self-ensemble-4/sota/ensemble/7/m1/best_model_altlex_label'), (1, 'models/self-ensemble-4/sota/ensemble/7/m2/best_model_altlex_label'), (2, 'models/self-ensemble-4/sota/ensemble/7/m3/best_model_altlex_label')]
+RANDOM SEED: 28926
+Load Model(s)
+-- loaded models/self-ensemble-4/sota/ensemble/7/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/7/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/7/m3/best_model_altlex_label
+
+=== Evaluate models: [0, 1, 2]
+I-ALTLEX        43.86  45.05  44.44  222
+O               99.90  99.88  99.89  127694
+S-ALTLEX        66.20  75.81  70.68  62
+macro avg       69.98  73.58  71.67  127978
+weighted avg    99.78  99.78  99.78  127978
+Full-strong     47.59  58.52  52.49  0
+Full-soft       51.20  62.96  56.48  0
+
++ python3 test_label.py pdtb3 -b 32 --save-path 'models/self-ensemble-4/sota/ensemble/8/m*' --random-seed 20759 --mode ensemble
+SAVE PATHS: [(0, 'models/self-ensemble-4/sota/ensemble/8/m1/best_model_altlex_label'), (1, 'models/self-ensemble-4/sota/ensemble/8/m2/best_model_altlex_label'), (2, 'models/self-ensemble-4/sota/ensemble/8/m3/best_model_altlex_label')]
+RANDOM SEED: 20759
+Load Model(s)
+-- loaded models/self-ensemble-4/sota/ensemble/8/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/8/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/8/m3/best_model_altlex_label
+
+=== Evaluate models: [0, 1, 2]
+I-ALTLEX        48.83  41.67  44.96  300
+O               99.85  99.89  99.87  130717
+S-ALTLEX        62.86  62.86  62.86  70
+macro avg       70.51  68.14  69.23  131087
+weighted avg    99.72  99.73  99.72  131087
+Full-strong     46.02  48.50  47.23  0
+Full-soft       48.86  51.50  50.15  0
+
++ python3 test_label.py pdtb3 -b 32 --save-path 'models/self-ensemble-4/sota/ensemble/9/m*' --random-seed 21993 --mode ensemble
+SAVE PATHS: [(0, 'models/self-ensemble-4/sota/ensemble/9/m1/best_model_altlex_label'), (1, 'models/self-ensemble-4/sota/ensemble/9/m2/best_model_altlex_label'), (2, 'models/self-ensemble-4/sota/ensemble/9/m3/best_model_altlex_label')]
+RANDOM SEED: 21993
+Load Model(s)
+-- loaded models/self-ensemble-4/sota/ensemble/9/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/9/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/9/m3/best_model_altlex_label
+
+=== Evaluate models: [0, 1, 2]
+I-ALTLEX        60.79  53.99  57.19  313
+O               99.86  99.90  99.88  126991
+S-ALTLEX        77.27  62.20  68.92  82
+macro avg       79.31  72.03  75.33  127386
+weighted avg    99.75  99.77  99.76  127386
+Full-strong     53.55  54.44  53.99  0
+Full-soft       56.28  57.22  56.75  0
+
++ python3 test_label.py pdtb3 -b 32 --save-path 'models/self-ensemble-4/sota/ensemble/10/m*' --random-seed 7236 --mode ensemble
+SAVE PATHS: [(0, 'models/self-ensemble-4/sota/ensemble/10/m1/best_model_altlex_label'), (1, 'models/self-ensemble-4/sota/ensemble/10/m2/best_model_altlex_label'), (2, 'models/self-ensemble-4/sota/ensemble/10/m3/best_model_altlex_label')]
+RANDOM SEED: 7236
+Load Model(s)
+-- loaded models/self-ensemble-4/sota/ensemble/10/m1/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/10/m2/best_model_altlex_label
+-- loaded models/self-ensemble-4/sota/ensemble/10/m3/best_model_altlex_label
+
+=== Evaluate models: [0, 1, 2]
+I-ALTLEX        40.87  33.60  36.88  253
+O               99.84  99.88  99.86  114497
+S-ALTLEX        71.43  69.23  70.31  65
+macro avg       70.71  67.57  69.02  114815
+weighted avg    99.69  99.72  99.70  114815
+Full-strong     44.74  47.55  46.10  0
+Full-soft       48.68  51.75  50.17  0
+
+
+60.33  67.68  63.79  54.35  60.98  57.47
+51.98  58.97  55.26  49.72  56.41  52.85
+49.38  59.85  54.11  47.50  57.58  52.05
+44.81  60.00  51.30  42.21  56.52  48.33
+51.40  64.79  57.32  48.04  60.56  53.58
+51.89  64.43  57.49  47.57  59.06  52.69
+51.20  62.96  56.48  47.59  58.52  52.49
+48.86  51.50  50.15  46.02  48.50  47.23
+56.28  57.22  56.75  53.55  54.44  53.99
+48.68  51.75  50.17  44.74  47.55  46.10
+
+45.41  56.33  50.28  43.37  53.80  48.02
+48.08  53.57  50.68  44.87  50.00  47.30
+51.81  63.24  56.95  46.99  57.35  51.66
+52.51  63.51  57.49  48.04  58.11  52.60
+42.05  64.06  50.77  39.49  60.16  47.68
+50.00  54.86  52.32  46.20  50.69  48.34
+41.63  59.51  48.99  41.20  58.90  48.48
+46.07  59.85  52.06  42.70  55.47  48.25
+43.88  60.14  50.74  40.82  55.94  47.20
+46.63  61.22  52.94  43.01  56.46  48.82
+
+
+0.5102040816326531  0.5905511811023622  0.5474452554744526  0.4965986394557823  0.5748031496062992  0.5328467153284672
+0.5714285714285714  0.6486486486486487  0.6075949367088608  0.5416666666666666  0.6148648648648649  0.5759493670886077
+0.41089108910891087  0.538961038961039  0.46629213483146065  0.3811881188118812  0.5  0.43258426966292135
+0.4506172839506173  0.5367647058823529  0.4899328859060403  0.3888888888888889  0.4632352941176471  0.42281879194630867
+0.5141509433962265  0.6646341463414634  0.5797872340425533  0.49528301886792453  0.6402439024390244  0.5585106382978723
+0.510989010989011  0.6739130434782609  0.58125  0.46153846153846156  0.6086956521739131  0.525
+0.43478260869565216  0.625  0.5128205128205128  0.41304347826086957  0.59375  0.4871794871794871
+0.5309278350515464  0.6776315789473685  0.5953757225433526  0.4742268041237113  0.6052631578947368  0.5317919075144509
+0.48299319727891155  0.4797297297297297  0.4813559322033898  0.4557823129251701  0.4527027027027027  0.45423728813559316
+0.4491017964071856  0.5905511811023622  0.510204081632653  0.40718562874251496  0.5354330708661418  0.46258503401360546
+
+final-all-ens/1  0.42045454545454547  0.5967741935483871  0.4933333333333333  0.3977272727272727  0.5645161290322581  0.4666666666666667
+final-all-ens/1  0.3989071038251366  0.5887096774193549  0.47557003257328995  0.366120218579235  0.5403225806451613  0.4364820846905538
+final-all-ens/1  0.4491017964071856  0.6048387096774194  0.5154639175257733  0.41317365269461076  0.5564516129032258  0.47422680412371127
+final-all-ens/1  0.4506172839506173  0.5887096774193549  0.5104895104895105  0.4382716049382716  0.5725806451612904  0.4965034965034965
+final-all-ens/2  0.515527950310559  0.5570469798657718  0.535483870967742  0.453416149068323  0.4899328859060403  0.47096774193548385
+final-all-ens/2  0.5060240963855421  0.5637583892617449  0.5333333333333333  0.463855421686747  0.5167785234899329  0.48888888888888893
+final-all-ens/2  0.4504950495049505  0.610738255033557  0.5185185185185185  0.40594059405940597  0.5503355704697986  0.4672364672364672
+final-all-ens/2  0.5119047619047619  0.5771812080536913  0.5425867507886436  0.47023809523809523  0.5302013422818792  0.49842271293375384

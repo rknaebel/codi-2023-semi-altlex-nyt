@@ -1,6 +1,5 @@
 import json
 import os
-import random
 import sys
 from pathlib import Path
 
@@ -65,10 +64,12 @@ def sort_select_items(items, limit_ratio):
 
 
 def load_pseudo_docs(pseudo_labels_path, filter_empty_paragraphs=False, limit_ratio_pos=0.8, limit_ratio_neg=0.90,
-                     paragraph_relation_threshold=0.0, sort_select=True, relation_threshold=0.50):
+                     paragraph_relation_threshold=0.0, sort_select=True, relation_threshold=0.50, document_limit=0):
     positives = []
     negatives = []
-    for line in open(pseudo_labels_path):
+    for line_i, line in enumerate(open(pseudo_labels_path)):
+        if 0 < document_limit < line_i:
+            break
         par = json.loads(line)
         offset = par['tokens_idx'][0]
         labels = ['O' for _ in par['tokens_idx']]
@@ -86,12 +87,7 @@ def load_pseudo_docs(pseudo_labels_path, filter_empty_paragraphs=False, limit_ra
                     if len(r['tokens_idx']) == 1:
                         label = 'S-ALTLEX'
                     else:
-                        if t_i == 0:
-                            label = 'B-ALTLEX'
-                        elif t_i == (len(r['tokens_idx']) - 1):
-                            label = 'I-ALTLEX'
-                        else:
-                            label = 'I-ALTLEX'
+                        label = 'I-ALTLEX'
                     labels[idx - offset] = label
                 probs.append(r['is_relation'])
             par['labels'] = labels
@@ -99,20 +95,21 @@ def load_pseudo_docs(pseudo_labels_path, filter_empty_paragraphs=False, limit_ra
             if paragraph_relation_threshold > par['prob']:
                 continue
             positives.append(par)
-    if sort_select:
-        return sort_select_items(positives, limit_ratio_pos) + sort_select_items(negatives, limit_ratio_neg)
-    else:
-        items = positives + negatives
-        limit = int(len(items) * limit_ratio_pos)
-        return random.sample(items, k=limit)
+    # if sort_select:
+    #     return sort_select_items(positives, limit_ratio_pos) + sort_select_items(negatives, limit_ratio_neg)
+    # else:
+    #     items = positives + negatives
+    #     limit = int(len(items) * limit_ratio_pos)
+    #     return random.sample(items, k=limit)
+    return positives + negatives
 
 
 @click.command()
 @click.argument('corpus')
 @click.option('--corpus-plus', default="")
 @click.option('-b', '--batch-size', type=int, default=8)
-@click.option('--split-ratio', type=float, default=0.8)
-@click.option('--save-path', default=".")
+@click.option('--split-ratio', type=float, default=0.9)
+@click.option('--save-path', default="")
 @click.option('--test-set', is_flag=True)
 @click.option('--test-seed', default=42, type=int)
 @click.option('--valid-seed', default=42, type=int)
@@ -121,22 +118,25 @@ def load_pseudo_docs(pseudo_labels_path, filter_empty_paragraphs=False, limit_ra
 @click.option('--sample-ratio', default=0.0, type=float)
 @click.option('-r', '--replace', is_flag=True)
 @click.option('--none-weight', default=1.0, type=float)
-@click.option('--num-epochs', default=30, type=int)
-@click.option('--initial-learning-rate', default=1e-5, type=float)
+@click.option('--num-epochs', default=10, type=int)
+@click.option('--document-limit', default=0, type=int)
+@click.option('--initial-learning-rate', default=1e-4, type=float)
 @click.option('--pseudo-limit-ratio', default=0.8, type=float)
+@click.option('--paragraph-relation-threshold', default=0.7, type=float)
 @click.option('--sort-select', is_flag=True)
 @click.option('--val-metric', default='f1-score', type=click.Choice(['f1-score', 'precision', 'recall']))
 def main(corpus, corpus_plus, batch_size, split_ratio, save_path, test_set, test_seed, valid_seed, weighted_loss,
-         continue_model, sample_ratio, replace, none_weight, num_epochs, initial_learning_rate, pseudo_limit_ratio,
-         sort_select, val_metric):
-    save_path = Path(save_path)
-    if save_path.is_dir() and (save_path / "best_model_altlex_label").exists() and not replace:
-        print('LabelModel already exists: Exit without writing.', file=sys.stderr)
-        return
+         continue_model, sample_ratio, replace, none_weight, num_epochs, document_limit, initial_learning_rate,
+         pseudo_limit_ratio, paragraph_relation_threshold, sort_select, val_metric):
+    if save_path:
+        save_path = Path(save_path)
+        if save_path.is_dir() and (save_path / "best_model_altlex_label").exists() and not replace:
+            print('LabelModel already exists: Exit without writing.', file=sys.stderr)
+            return
     corpus_path = get_corpus_path(corpus)
     train_docs = list(load_docs(corpus_path))
     if test_set:
-        train_docs, test_docs = sklearn.model_selection.train_test_split(train_docs, test_size=0.2,
+        train_docs, test_docs = sklearn.model_selection.train_test_split(train_docs, test_size=0.1,
                                                                          random_state=test_seed)
     train_docs, valid_docs = sklearn.model_selection.train_test_split(train_docs, train_size=split_ratio,
                                                                       random_state=valid_seed)
@@ -146,14 +146,16 @@ def main(corpus, corpus_plus, batch_size, split_ratio, save_path, test_set, test
     valid_dataset = ConnDataset(valid_docs, labels=train_dataset.labels)
     print('SAMPLE', len(train_dataset), train_dataset[0])
     print('LABELS:', train_dataset.labels)
+    print('Average Sequence Length:', np.mean([len(item['tokens']) for item in dataset.items]))
     print('TRAIN LABEL COUNTS:', train_dataset.get_label_counts())
     print('VALID LABEL COUNTS:', valid_dataset.get_label_counts())
 
     if corpus_plus:
         pseudo_labels = load_pseudo_docs(corpus_plus,
-                                         limit_ratio_pos=0.40, limit_ratio_neg=0.80,
-                                         sort_select=sort_select,
-                                         paragraph_relation_threshold=0.80, relation_threshold=0.40)
+                                         # limit_ratio_pos=0.40, limit_ratio_neg=0.80,
+                                         # sort_select=sort_select,
+                                         paragraph_relation_threshold=paragraph_relation_threshold,
+                                         relation_threshold=0.33, document_limit=document_limit)
         conn_plus_dataset = ConnDataset([], labels=valid_dataset.labels)
         conn_plus_dataset.add_pseudo_samples(pseudo_labels)
         print('PSEUDO SAMPLE', len(conn_plus_dataset), conn_plus_dataset[0])
@@ -286,8 +288,9 @@ def main(corpus, corpus_plus, batch_size, split_ratio, save_path, test_set, test
         if current_score[0] > best_score[0]:
             best_score = current_score
             print(f"Store new best model! Score: {current_score[0]}...")
-            model_save_path = os.path.join(save_path, f"best_model_altlex_label")
-            model.save_pretrained(model_save_path)
+            if save_path:
+                model_save_path = os.path.join(save_path, f"best_model_altlex_label")
+                model.save_pretrained(model_save_path)
             epochs_no_improvement = 0
         else:
             epochs_no_improvement += 1
